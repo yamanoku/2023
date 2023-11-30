@@ -9,5 +9,5 @@ const articleCollection = defineCollection({
 });
 
 export const collections = <const>{
-  archives: articleCollection,
+  articles: articleCollection,
 };
