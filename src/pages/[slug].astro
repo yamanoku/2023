@@ -5,6 +5,7 @@ import { getCollection } from "astro:content";
 import BaseHead from '../components/BaseHead.astro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
+import dayjs from 'dayjs';
 import { loadDefaultJapaneseParser } from 'budoux';
 
 type Props = {
@@ -84,6 +85,9 @@ const twitterLink = `https://twitter.com/intent/tweet?url=https://2023.yamanoku.
     <Header />
     <main>
       <article>
+        <div>
+          <time datetime={dayjs(post.data.date).format('YYYY-MM-DD')}>{dayjs(post.data.date).format('YYYY-MM-DD')}</time>
+        </div>
         <h1 class="title" set:html={parser.translateHTMLString(post.data.title)} />
         <Content />
       </article>
