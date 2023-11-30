@@ -1,0 +1,44 @@
+---
+import BaseHead from '../components/BaseHead.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
+import dayjs from 'dayjs'
+
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('articles')).sort(
+  (a, b) =>
+    new Date(b.data.date).valueOf() -
+    new Date(a.data.date).valueOf()
+);
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main>
+      <h1>yamanoku Advent Calendar 2023</h1>
+      <p>
+        このサイトは<a href="https://adventar.org/calendars/8589">yamanoku Advent Calendar 2023</a>のためのサイトです。
+      </p>
+      <ul>
+      {
+        posts.map((post) => (
+          <li>
+            <time datetime={dayjs(post.data.date).format('YYYY-MM-DD')}>
+              {dayjs(post.data.date).format('YYYY-MM-DD')}
+            </time>
+            -
+            <a href={post.slug}>{post.data.title}</a>
+          </li>
+        ))
+      }
+      </ul>
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,31 @@
+---
+import 'modern-normalize'
+import 'yama-normalize'
+import 'prism-themes/themes/prism-a11y-dark.css'
+
+export interface Props {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
+
+const ogpImageURL = new URL('/ogp-image.png', Astro.url);
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogpImageURL} />
+<meta property="twitter:card" content="summary" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={ogpImageURL} />

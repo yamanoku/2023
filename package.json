@@ -1,0 +1,29 @@
+{
+  "name": "2023.yamanoku.net",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "prettier": "prettier --write ."
+  },
+  "dependencies": {
+    "@astrojs/rss": "3.0.0",
+    "@astrojs/sitemap": "3.0.3",
+    "astro": "3.6.3",
+    "dayjs": "1.11.10",
+    "modern-normalize": "2.0.0",
+    "prism-themes": "1.9.0",
+    "yama-normalize": "1.11.0"
+  },
+  "devDependencies": {
+    "budoux": "0.6.1",
+    "gray-matter": "4.0.3",
+    "prettier": "3.1.0",
+    "puppeteer": "21.5.2",
+    "rehype-external-links": "3.0.0",
+    "rehype-plugin-auto-resolve-layout-shift": "1.0.0",
+    "rehype-plugin-image-native-lazy-loading": "1.2.0"
+  }
+}

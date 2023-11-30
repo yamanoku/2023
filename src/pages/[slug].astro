@@ -1,0 +1,109 @@
+---
+import type { Page } from "astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import BaseHead from '../components/BaseHead.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import { loadDefaultJapaneseParser } from 'budoux';
+
+type Props = {
+  page: Page<CollectionEntry<'articles'>>;
+};
+
+export async function getStaticPaths() {
+  global.data = global.data ? global.data : await getCollection('articles');
+  return global.data.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const pathName = canonicalURL.pathname.split('/').join('');
+const parser = loadDefaultJapaneseParser();
+
+const gitHubLink = `https://github.com/yamanoku/2023/issues/new?title=「${post.data.title}」の修正依頼&labels=feedback&body=URL：https://2023.yamanoku.net/${pathName}%0A修正依頼内容：%0A`;
+const twitterLink = `https://twitter.com/intent/tweet?url=https://2023.yamanoku.net/${pathName}&text=@yamanoku`;
+---
+
+<html lang="ja">
+  <head>
+    <BaseHead title={`${post.data.title} | yamanoku Advent Calendar 2023`} description={post.data.description} />
+    <style>
+      .bread-crumbs {
+        margin: var(--y-rhythm-3) 0;
+      }
+    </style>
+    <style>
+      .notes {
+        margin: var(--y-rhythm-3) 0;
+      }
+      .article-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: calc(var(--y-rhythm-2) * -1);
+        padding: 0;
+      }
+      .article-header > * {
+        margin: var(--y-rhythm-2);
+      }
+    </style>
+    <style is:global>
+      .footnotes {
+        position: relative;
+        padding-top: var(--y-rhythm-3);
+      }
+      .footnotes::before {
+        content: '';
+        width: 100%;
+        height: 1px;
+        background-color: var(--y-arcticle-border-color);
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .footnotes h2 {
+        position: absolute;
+        left: -10000px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      }
+      .footnotes li p {
+        margin: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <Header />
+    <main>
+      <article>
+        <h1 class="title" set:html={parser.translateHTMLString(post.data.title)} />
+        <Content />
+      </article>
+      <details>
+        <summary>この記事に関する修正依頼</summary>
+        <ul>
+          <li>
+            <a href={gitHubLink} target="_blank">
+              GitHub Issueを作成する
+            </a>
+          </li>
+          <li>
+            <a href={twitterLink} target="_blank">
+              著者にポストする
+            </a>
+          </li>
+        </ul>
+      </details>
+      <a href="/">トップへ戻る</a>
+    </main>
+    <Footer />
+  </body>
+</html>
