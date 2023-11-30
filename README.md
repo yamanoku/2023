@@ -1,6 +1,6 @@
 # 2023.yamanoku.net
 
-[yamanoku](https://github.com/yamanoku) archive contents. (Japanese Only)
+このサイトは[yamanoku Advent Calendar 2023](https://adventar.org/calendars/8589)の記事をまとめたサイトです。
 
 https://2023.yamanoku.net/
 
