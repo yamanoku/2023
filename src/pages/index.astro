@@ -8,8 +8,8 @@ import dayjs from 'dayjs'
 import { getCollection } from 'astro:content';
 const posts = (await getCollection('articles')).sort(
   (a, b) =>
-    new Date(b.data.date).valueOf() -
-    new Date(a.data.date).valueOf()
+    new Date(a.data.date).valueOf() -
+    new Date(b.data.date).valueOf()
 );
 ---
 
@@ -17,6 +17,16 @@ const posts = (await getCollection('articles')).sort(
 <html lang="ja">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      .time-wbr {
+        word-break: keep-all;
+        overflow-wrap: anywhere;
+      }
+      .table-th, .table-td {
+        font-size: 1rem;
+        padding-block: 8px;
+      }
+    </style>
   </head>
   <body>
     <Header title={SITE_TITLE} />
@@ -25,18 +35,32 @@ const posts = (await getCollection('articles')).sort(
       <p>
         このサイトは<a href="https://adventar.org/calendars/8589">yamanoku Advent Calendar 2023</a>の記事をまとめたサイトです。
       </p>
-      <ul>
-      {
-        posts.map((post) => (
-          <li>
-            <time datetime={dayjs(post.data.date).format('YYYY-MM-DD')}>
-              {dayjs(post.data.date).format('YYYY-MM-DD')}
-            </time>
-            -
-            <a href={post.slug}>{post.data.title}</a>
-          </li>
-        ))
-      }
+      <h2>記事一覧</h2>
+      <table>
+        <thead>
+          <tr>
+            <th class="table-th">日付</th>
+            <th class="table-th">記事タイトル</th>
+          </tr>
+        <tbody>
+          {
+            posts.map((post) => (
+              <tr>
+                <td class="table-td">
+                  <time datetime={dayjs(post.data.date).format('YYYY-MM-DD')}>
+                    <span class="time-wbr">
+                      {dayjs(post.data.date).format('MM月')}<wbr />
+                      {dayjs(post.data.date).format('D日')}<wbr />
+                    </span>
+                  </time>
+                </th>
+                <td class="table-td">
+                  <a href={post.slug}>{post.data.title}</a>
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
       </ul>
     </main>
     <Footer />
