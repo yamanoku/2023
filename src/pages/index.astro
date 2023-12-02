@@ -22,10 +22,6 @@ const posts = (await getCollection('articles')).sort(
         word-break: keep-all;
         overflow-wrap: anywhere;
       }
-      .table-th, .table-td {
-        font-size: 1rem;
-        padding-block: 8px;
-      }
     </style>
   </head>
   <body>
@@ -39,14 +35,14 @@ const posts = (await getCollection('articles')).sort(
       <table>
         <thead>
           <tr>
-            <th class="table-th">日付</th>
-            <th class="table-th">記事タイトル</th>
+            <th>日付</th>
+            <th>記事タイトル</th>
           </tr>
         <tbody>
           {
             posts.map((post) => (
               <tr>
-                <td class="table-td">
+                <td>
                   <time datetime={dayjs(post.data.date).format('YYYY-MM-DD')}>
                     <span class="time-wbr">
                       {dayjs(post.data.date).format('MM月')}<wbr />
@@ -54,7 +50,7 @@ const posts = (await getCollection('articles')).sort(
                     </span>
                   </time>
                 </th>
-                <td class="table-td">
+                <td>
                   <a href={post.slug}>{post.data.title}</a>
                 </td>
               </tr>
