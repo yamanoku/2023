@@ -9,7 +9,7 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
-    "@astrojs/rss": "3.0.0",
+    "@astrojs/rss": "4.0.0",
     "@astrojs/sitemap": "3.0.3",
     "astro": "4.0.2",
     "dayjs": "1.11.10",
