@@ -89,6 +89,7 @@ const twitterLink = `https://twitter.com/intent/tweet?url=https://2023.yamanoku.
           <time datetime={dayjs(post.data.date).format('YYYY-MM-DD')}>{dayjs(post.data.date).format('YYYY-MM-DD')}</time>
         </div>
         <h1 class="title" set:html={parser.translateHTMLString(post.data.title)} />
+        <p>この記事は<a href="https://adventar.org/calendars/8589">yamanoku Advent Calendar 2023</a>の{dayjs(post.data.date).format('D')}日目の記事になります。</p>
         <Content />
       </article>
       <details>
