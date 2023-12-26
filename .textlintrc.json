@@ -1,0 +1,15 @@
+{
+  "plugins": {},
+  "filters": {
+    "allowlist": {
+      "allow": [
+        "お元気ですか.fm",
+        "Rome Tools, Inc."
+      ]
+    }
+  },
+  "rules": {
+    "textlint-rule-preset-ja-spacing": true,
+    "textlint-rule-preset-jtf-style": true
+  }
+}
