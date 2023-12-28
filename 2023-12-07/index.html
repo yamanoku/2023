@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="ja" data-astro-cid-yvbahnfj> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/x-icon" href="/favicon.ico"><title>あなたの推しコンパイラは？私はSvelteです | yamanoku Advent Calendar 2023</title><meta name="title" content="あなたの推しコンパイラは？私はSvelteです | yamanoku Advent Calendar 2023"><meta name="description" content="Svelteのコンパイラとして推せる部分、それにまつわるネガティブな反応とこれからの在り方について"><meta property="og:type" content="website"><meta property="og:url" content="https://2023.yamanoku.net/2023-12-07/"><meta property="og:title" content="あなたの推しコンパイラは？私はSvelteです | yamanoku Advent Calendar 2023"><meta property="og:description" content="Svelteのコンパイラとして推せる部分、それにまつわるネガティブな反応とこれからの在り方について"><meta property="og:image" content="https://2023.yamanoku.net/ogp-image.png"><meta property="twitter:card" content="summary"><meta property="twitter:url" content="https://2023.yamanoku.net/2023-12-07/"><meta property="twitter:title" content="あなたの推しコンパイラは？私はSvelteです | yamanoku Advent Calendar 2023"><meta property="twitter:description" content="Svelteのコンパイラとして推せる部分、それにまつわるネガティブな反応とこれからの在り方について"><meta property="twitter:image" content="https://2023.yamanoku.net/ogp-image.png"><link rel="stylesheet" href="/_astro/_slug_.xEav6_Ut.css" />
+<style>.footnotes{position:relative;padding-top:var(--y-rhythm-3)}.footnotes:before{content:"";width:100%;height:1px;background-color:var(--y-arcticle-border-color);position:absolute;top:0;left:0}.footnotes h2{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}.footnotes li p{margin:0}.notes[data-astro-cid-yvbahnfj]{margin:var(--y-rhythm-3) 0}.article-header[data-astro-cid-yvbahnfj]{display:flex;flex-wrap:wrap;justify-content:space-between;margin:calc(var(--y-rhythm-2) * -1);padding:0}.article-header[data-astro-cid-yvbahnfj]>[data-astro-cid-yvbahnfj]{margin:var(--y-rhythm-2)}.bread-crumbs[data-astro-cid-yvbahnfj]{margin:var(--y-rhythm-3) 0}
+</style></head> <body data-astro-cid-yvbahnfj> <header data-astro-cid-3ef6ksr2> <div class="header-logo-link-block" data-astro-cid-3ef6ksr2> <svg class="header-logo-image" width="48" height="48" viewBox="0 0 246 242" role="img" aria-label="yamanoku" data-astro-cid-3ef6ksr2> <style>
+        .path {
+          fill: rgb(54, 70, 93);
+          fill-rule: evenodd;
+        }
+        @media (prefers-color-scheme: dark) {
+          .path {
+            fill: var(--y-white-base);
+          }
+        }
+      </style> <path class="path" d="M64,67v54l82,82-46,46v60h56L310,155V96H230l-21,20L160,67H64ZM176,203l-45,46h25L293,113H230l-39,39-31-31H94Z" transform="translate(-64 -67)" data-astro-cid-3ef6ksr2></path> </svg> <span data-astro-cid-3ef6ksr2>Advent Calendar 2023</span> </div> </header>  <main data-astro-cid-yvbahnfj> <article data-astro-cid-yvbahnfj> <div data-astro-cid-yvbahnfj> <time datetime="2023-12-07" data-astro-cid-yvbahnfj>2023-12-07</time> </div> <h1 class="title" data-astro-cid-yvbahnfj><span style="word-break: keep-all; overflow-wrap: anywhere;">あなたの​推しコンパイラは？​私は​Svelteです</span></h1> <p data-astro-cid-yvbahnfj>この記事は<a href="https://adventar.org/calendars/8589" data-astro-cid-yvbahnfj>yamanoku Advent Calendar 2023</a>の7日目の記事になります。</p> <p>こんにちは。<strong>私の推しコンパイラはSvelteです</strong>。というわけで今日はコンパイラ視点でのSvelteの好きな部分の話をしていきます。</p>
+<h2 id="accessibility-warningsというアクセシビリティチェック機能">Accessibility warningsというアクセシビリティチェック機能</h2>
+<p>Svelteはコンパイル時にアクセシビリティに関する誤った記法があった際に警告を出してくれます。この機能こそが私がSvelteをコンパイラとして最も推せる理由です。</p>
+<p>たとえばSvelteのコード内で<code>&#x3C;img></code>要素に<code>alt</code>属性がないものを書いてみましょう。</p>
+<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>img</span>
+  <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://i.gyazo.com/809a6f523937838d9ba5eaf20717feee.png<span class="token punctuation">"</span></span>
+  <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>320<span class="token punctuation">"</span></span>
+<span class="token punctuation">/></span></span></code></pre>
+<p>すると<code>alt</code>属性を付けるように警告を出してくれます。これは「a11y-missing-attribute」というルールによるものです。</p>
+<pre class="language-shell"><code is:raw="" class="language-shell">A11y: <span class="token operator">&#x3C;</span>img<span class="token operator">></span> element should have an alt attribute</code></pre>
+<blockquote>
+<p>参考：<a href="https://svelte.dev/repl/7c40bf320f5040ce80c72803da37b072?version=4.2.8">Svelte REPLでのサンプルコード</a></p>
+</blockquote>
+<p>これがESLintのプラグインとしてではなく標準のチェッカーとして設定されていることが非常に心強く感じました。</p>
+<p>もちろん、実装上どうしてもルールを無視せざるを得ない場合もあります。もし警告を出したくない場合は<code>&#x3C;!-- svelte-ignore a11y-&#x3C;code> --></code>というコメントを記述することで無視することができます。</p>
+<pre class="language-html"><code is:raw="" class="language-html"><span class="token comment">&#x3C;!-- svelte-ignore a11y-autofocus --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">autofocus</span> <span class="token punctuation">/></span></span></code></pre>
+<p>アクセシビリティにまつわるルールは12月7日現在で28個のルールがあり、それらの詳細は<a href="https://svelte.jp/docs/accessibility-warnings">ドキュメントにまとまっています</a>。</p>
+<p><a href="https://www.sveltesummit.com/2023/fall">Svelte Summit Fall 2023</a>の「Accessibility tips with Svelte solutions」で現時点のSvelteのアクセシビリティに関するルールについてEnrico Sacchettiが説明してくれています<sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>。ざっくりと理解する上でも良い発表内容になっておりますので是非ご覧になってみてください。</p>
+<h2 id="svelteを書きつつアクセシビリティを守れるようにしたい">Svelteを書きつつアクセシビリティを守れるようにしたい</h2>
+<p>ところでSvelteのコンパイラにこうした機能が導入されてるのは何故なのでしょうか。それはSvelteの作者であるRich Harrisが過去書いた「A11y and being a good citizen of the web」というIssueを見るとその意図が分かります。</p>
+<blockquote>
+<p>Personal confession: I suck at a11y. I have 20/20 vision, no colour blindness, good hearing, and no disabilities. Because of that I’m bad at remembering to write accessible markup — the non-accessible web seems fine to me.</p>
+</blockquote>
+<blockquote>
+<p>Svelte could help me with that, because of what it is and how it works. For example it could yell at me if I add an <code>&#x3C;img></code> tag and forget the <code>alt</code> attribute, and it could do all that at compile time. I don’t think it should be an error, because then it will just get in the way of rapid prototyping and drive people mad, but it would be useful to get a printout of accessibility hints when a component is compiled, for example.</p>
+</blockquote>
+<blockquote>
+<p>We can help educate developers about a11y and make a strong statement about the kind of web we want to be a part of — I think we should.</p>
+</blockquote>
+<blockquote>
+<p><a href="https://github.com/sveltejs/svelte/issues/374">A11y and being a good citizen of the web · Issue #374 · sveltejs/svelte</a></p>
+</blockquote>
+<p>Rich Harrisはアクセシビリティについては苦手意識をもっており、自身も障害は特になくアクセシビリティを意識したマークアップが苦手であると告白しています。Svelteにて<code>&#x3C;img></code>に<code>alt</code>属性を入れるようにアクセシビリティにまつわる指摘を導入することで、開発者自身がそのヒントを元にアクセシビリティを意識し、Webの良き市民となれるようにしたい、といったことが書かれています。</p>
+<p>この内容が作者により示されていたことに、当時Svelteを知りたてだった頃の私は非常に感銘を受けました（アクセシビリティに関心があったからもありますが）。</p>
+<p>余談ですが今年の4月にあった発表<a href="https://zenn.dev/ryoppippi/articles/8addfe62eb4d3e">🌶️ IMHO 🌶️ - Rich Harris on frameworks, the web, and the edge.</a>についてもほぼ同意できる内容でとても良かったです。最近はSvelteそのものよりもRich Harris自身のほうが好きになってきています。</p>
+<h2 id="コミュニティ内からは微妙な反応が">コミュニティ内からは微妙な反応が…</h2>
+<p>いやぁSvelteは作者も含めて素晴らしいなぁ！ということで綺麗にこの話を終えたいと思っていたのですが、コミュニティ内からはこの部分について微妙な反応があることも知りました。この記事がSvelteコンパイラのアゲ記事だけにならないためにも、それらについても取り上げてみようと思います。</p>
+<blockquote>
+<p><a href="https://github.com/sveltejs/language-tools/issues/650">How can we disable svelte warnings? (a11y, etc) · Issue #650 · sveltejs/language-tools</a></p>
+</blockquote>
+<p>1つめのIssueではVSCodeのSvelte拡張機能にてアクセシビリティやそれらにまつわる警告を無視する方法はないのか、という内容が議論がされています。VSCodeの設定を上書きして<code>svelte.config.js</code>の設定を変更することで無視することができることが示されていますが、不満を持っている人も多いのか<a href="https://github.com/sveltejs/language-tools/issues/650#issuecomment-1207510357">アクセシビリティに対して強めの発言をされている</a>のが気になります。</p>
+<blockquote>
+<p><a href="https://github.com/sveltejs/svelte/issues/9485">Move a11y check to the eslint plugin · Issue #9485 · sveltejs/svelte</a></p>
+</blockquote>
+<p>2つめのIssueではESLintプラグインとしてアクセシビリティに関するチェッカーを移行することについて議論がされ始めています。アクセシビリティのチェックはすでにESLintのプラグインとしていくつか実装されており、ESLintコミュニティの恩恵を得ることで車輪の再開発をする必要はないのではないか、という意見が出ています。</p>
+<p>現在は非推奨となっている<a href="https://github.com/sveltejs/eslint-plugin-svelte3">eslint-plugin-svelte3</a>というESLintプラグインでは<code>svelte3/compiler-options</code>や<code>svelte3/ignore-warnings</code>というルールでLinterの警告やコンパイル時の警告を無視することができました。それを現行のプラグインである<a href="https://github.com/sveltejs/eslint-plugin-svelte/">eslint-plugin-svelte</a>にて同様の機能を実装できないか、という話もされています<sup><a href="#user-content-fn-2" id="user-content-fnref-2" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>。</p>
+<h2 id="コンパイラによるアクセシビリティチェックの難しさ">コンパイラによるアクセシビリティチェックの難しさ</h2>
+<p>アクセシビリティやWebの力を強く信じている私ですが、こういった意見ややり取りをみると寂しい気持ちになる反面、コンパイラの都合に対してもどかしく思うのは分からなくはないという気持ちの両方があります。</p>
+<p>私はかつてSvelteのアクセシビリティルールについて提案をしてみたことがあります。</p>
+<blockquote>
+<p><a href="https://github.com/sveltejs/svelte/issues/6515"><code>a11y-label-has-associated-control</code>: Check if <code>for</code> attribute of label matches the <code>id</code> attribute of the control. · Issue #6515 · sveltejs/svelte</a></p>
+</blockquote>
+<p>svelte-checkにおける「a11y-label-has-associated-control」というルールは<code>&#x3C;label></code>要素が<code>for</code>属性を持っているかどうかをチェックしてくれます。しかし<code>for=""</code>でもバリデーションチェックは通ってしまいます。なぜなら<code>for</code>属性を持つかどうかだけをチェックしているだけだからです。</p>
+<!-- prettier-ignore-start -->
+<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hoge<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>hoge<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>label</span><span class="token punctuation">></span></span> <span class="token comment">&#x3C;!-- この状態でも問題ない判定 --></span></code></pre>
+<!-- prettier-ignore-end -->
+<blockquote>
+<p>参考： <a href="https://svelte.dev/repl/230fc5c1a4ff459f80fb0a27e7258fe6?version=4.2.8">Svelte REPLでのサンプルコード</a></p>
+</blockquote>
+<p>この状態ではコンパイラとしては問題ないがフォームコントロールのアクセシビリティが確保できていないので精度としては微妙だと思いました。</p>
+<p>そこで対応するコントロールの<code>id</code>属性とラベルの<code>for</code>属性が一致すれば問題ないようなバリデーションはできないか提案しました。</p>
+<p>しかしこの提案に対して「コンパイラとしてその判定をもつのは難しい」「誤検知につながりかねない」といった意見が出てきました。代わりにコンパイラ側ではなく<a href="https://www.deque.com/axe/">axe DevTools</a>といったツールでページ全体でそのチェックをすべきではないか、という意見も出てきてこの提案はクローズされました。</p>
+<p>私自身、Svelteのコンパイラ開発に携わってないため、このような判定を作ることがいかに難しいのかどうかは正直わかっておりません。それと同時に機械的なものだけでアクセシビリティチェックをすることの限界についても理解しているつもりです。Svelteのコンパイラだけに頼るのではなく、実際にユーザーテストをするなど様々な観点でアクセシビリティをチェックできるようにすることが重要です。</p>
+<h2 id="おわりに">おわりに</h2>
+<p>私が推しコンパイラとしてSvelteを選ぶ理由の1つにアクセシビリティに関するチェック機能があることを書きました。この機能がある事は私はとても良いことだと思ってはいますが、チェックが完全なものとして機能できていないことも分かっています。</p>
+<p>今後もまたいくつかアクセシビリティにまつわるルールは出てくるかもしれません。その度にルールを設定でignoreするのではなく、コンパイラとして<strong>なぜこのルールが今必要になるのか</strong>、<strong>それはどういう問題があるからなのか</strong>といった、コミュニティ内でアクセシビリティにまつわる部分を話し合っていくことが重要だと感じています。</p>
+<p>Svelteは私にとって好きなOSSの1つです。今後もSvelteの動向を見守りつつ、Svelteにおけるアクセシビリティにまつわる議論が進んでいくことを願っています。</p>
+<section data-footnotes="" class="footnotes"><h2 class="sr-only" id="footnote-label">脚注</h2>
+<ol>
+<li id="user-content-fn-1">
+<p><a href="https://youtu.be/pTgIx-ucMsY?t=11907">https://youtu.be/pTgIx-ucMsY?t=11907</a> <a href="#user-content-fnref-1" data-footnote-backref="" aria-label="コンテンツに戻る" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-2">
+<p><a href="https://github.com/sveltejs/eslint-plugin-svelte/issues/311">Ignore specific warnings of svelte-check · Issue #311 · sveltejs/eslint-plugin-svelte</a> <a href="#user-content-fnref-2" data-footnote-backref="" aria-label="コンテンツに戻る" class="data-footnote-backref">↩</a></p>
+</li>
+</ol>
+</section> </article> <details data-astro-cid-yvbahnfj> <summary data-astro-cid-yvbahnfj>この記事に関する修正依頼</summary> <ul data-astro-cid-yvbahnfj> <li data-astro-cid-yvbahnfj> <a href="https://github.com/yamanoku/2023/issues/new?title=「あなたの推しコンパイラは？私はSvelteです」の修正依頼&#38;labels=feedback&#38;body=URL：https://2023.yamanoku.net/2023-12-07%0A修正依頼内容：%0A" target="_blank" data-astro-cid-yvbahnfj>
+GitHub Issueを作成する
+</a> </li> <li data-astro-cid-yvbahnfj> <a href="https://twitter.com/intent/tweet?url=https://2023.yamanoku.net/2023-12-07&#38;text=@yamanoku" target="_blank" data-astro-cid-yvbahnfj>
+著者にポストする
+</a> </li> </ul> </details> <a href="/" data-astro-cid-yvbahnfj>トップへ戻る</a> </main> <footer data-astro-cid-sz7xmlte> <p data-astro-cid-sz7xmlte>&copy; Copyright 2023, Okuto Oyama</p> <p data-astro-cid-sz7xmlte>
+Source :
+<a href="https://github.com/yamanoku/2023/" target="_blank" rel="noopener" data-astro-cid-sz7xmlte>yamanoku/2023</a> </p> </footer>  </body></html>

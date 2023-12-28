@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="ja" data-astro-cid-yvbahnfj> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/x-icon" href="/favicon.ico"><title>オープンソースへのアクセシビリティコントリビュート振り返り | yamanoku Advent Calendar 2023</title><meta name="title" content="オープンソースへのアクセシビリティコントリビュート振り返り | yamanoku Advent Calendar 2023"><meta name="description" content="yamanokuのこれまでのオープンソースへのアクセシビリティへのコントリビュートを振り返ります"><meta property="og:type" content="website"><meta property="og:url" content="https://2023.yamanoku.net/2023-12-03/"><meta property="og:title" content="オープンソースへのアクセシビリティコントリビュート振り返り | yamanoku Advent Calendar 2023"><meta property="og:description" content="yamanokuのこれまでのオープンソースへのアクセシビリティへのコントリビュートを振り返ります"><meta property="og:image" content="https://2023.yamanoku.net/ogp-image.png"><meta property="twitter:card" content="summary"><meta property="twitter:url" content="https://2023.yamanoku.net/2023-12-03/"><meta property="twitter:title" content="オープンソースへのアクセシビリティコントリビュート振り返り | yamanoku Advent Calendar 2023"><meta property="twitter:description" content="yamanokuのこれまでのオープンソースへのアクセシビリティへのコントリビュートを振り返ります"><meta property="twitter:image" content="https://2023.yamanoku.net/ogp-image.png"><link rel="stylesheet" href="/_astro/_slug_.xEav6_Ut.css" />
+<style>.footnotes{position:relative;padding-top:var(--y-rhythm-3)}.footnotes:before{content:"";width:100%;height:1px;background-color:var(--y-arcticle-border-color);position:absolute;top:0;left:0}.footnotes h2{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}.footnotes li p{margin:0}.notes[data-astro-cid-yvbahnfj]{margin:var(--y-rhythm-3) 0}.article-header[data-astro-cid-yvbahnfj]{display:flex;flex-wrap:wrap;justify-content:space-between;margin:calc(var(--y-rhythm-2) * -1);padding:0}.article-header[data-astro-cid-yvbahnfj]>[data-astro-cid-yvbahnfj]{margin:var(--y-rhythm-2)}.bread-crumbs[data-astro-cid-yvbahnfj]{margin:var(--y-rhythm-3) 0}
+</style></head> <body data-astro-cid-yvbahnfj> <header data-astro-cid-3ef6ksr2> <div class="header-logo-link-block" data-astro-cid-3ef6ksr2> <svg class="header-logo-image" width="48" height="48" viewBox="0 0 246 242" role="img" aria-label="yamanoku" data-astro-cid-3ef6ksr2> <style>
+        .path {
+          fill: rgb(54, 70, 93);
+          fill-rule: evenodd;
+        }
+        @media (prefers-color-scheme: dark) {
+          .path {
+            fill: var(--y-white-base);
+          }
+        }
+      </style> <path class="path" d="M64,67v54l82,82-46,46v60h56L310,155V96H230l-21,20L160,67H64ZM176,203l-45,46h25L293,113H230l-39,39-31-31H94Z" transform="translate(-64 -67)" data-astro-cid-3ef6ksr2></path> </svg> <span data-astro-cid-3ef6ksr2>Advent Calendar 2023</span> </div> </header>  <main data-astro-cid-yvbahnfj> <article data-astro-cid-yvbahnfj> <div data-astro-cid-yvbahnfj> <time datetime="2023-12-03" data-astro-cid-yvbahnfj>2023-12-03</time> </div> <h1 class="title" data-astro-cid-yvbahnfj><span style="word-break: keep-all; overflow-wrap: anywhere;">オープンソースへの​アクセシビリティコントリビュート振り​返り</span></h1> <p data-astro-cid-yvbahnfj>この記事は<a href="https://adventar.org/calendars/8589" data-astro-cid-yvbahnfj>yamanoku Advent Calendar 2023</a>の3日目の記事になります。</p> <h2 id="オープンソースとアクセシビリティことはじめ">オープンソースとアクセシビリティことはじめ</h2>
+<p>アクセシビリティを学び始めて、なんらかのアクセシビリティ改善したいと望むことはあるでしょう。事業会社であれば自分が関わるプロダクトであったり、受託制作であればサイトであったり、あるいは自分の作ったプロダクトであればそれ自体を、といった形で改善してみたい対象は様々だと思います。</p>
+<p>私は現在事業会社に勤めており、関わるプロダクトや会社全体のアクセシビリティ向上に取り組んでいます。アクセシビリティに関する縁から副業に参画し、そこでも改善活動を行ってきました。しかし、本業や副業以外でもアクセシビリティを向上させる方法はないものかと考えていました。</p>
+<p>そんな時、機会が突然訪れました。2020年に新型コロナウイルスが蔓延していく中で立ち上がった<a href="https://github.com/Tokyo-Metro-Gov/covid19">東京都新型コロナウイルス感染症対策サイト</a>は非営利団体「<a href="https://www.code4japan.org/">Code for Japan</a>」によってオープンソースで運営されていました。</p>
+<p>このサイト自体はGitHubにて公開されており、誰でもコントリビュートすることができました。私はとあるきっかけによりこのオープンソースにコントリビュートするようになっていきます（詳細は<a href="https://archives.yamanoku.net/covid-19-site-a11y-contribute">東京都新型コロナウイルス対策サイトにアクセシビリティ視点でコントリビュートしてみた</a>をご覧ください）。</p>
+<p>いくつかのコントリビュートを経て、オープンソースを利用する人々にとって、それがアクセシビリティに考慮されていれば、より使いやすくなり、改善提案も増えていくのでは、と考えました。そこで、業務時間や余暇時間を利用して、関心のあるオープンソースプロジェクトにアクセシビリティ改善のための貢献を行ってきました。</p>
+<p>今回は、どのようなプロジェクトにどのような形で貢献してきたかを振り返りながら紹介します。これを読むことで、オープンソースへのアクセシビリティ取り組みに興味を持つ方の参考になれば幸いです。</p>
+<p>※一部は<a href="https://archives.yamanoku.net/open-source-contribution-activity-2021">2021年オープンソースコントリビュート活動振り返り</a>から引用しています。</p>
+<h2 id="gatsbyjsgatsby-ja">gatsbyjs/gatsby-ja</h2>
+<p>Gatsby.jsの公式日本語ドキュメントサイト（現在は別ドメインになり日本語翻訳は削除されています）。</p>
+<blockquote>
+<p><a href="https://github.com/gatsbyjs/gatsby-ja/pull/72">translate docs/making-your-site-accessible by yamanoku · Pull Request #72 · gatsbyjs/gatsby-ja</a></p>
+</blockquote>
+<p>「Making Your Site Accessible」というアクセシビリティにまつわるドキュメントを日本語翻訳しました。</p>
+<h2 id="mizchiamdx">mizchi/amdx</h2>
+<p><a href="https://twitter.com/mizchi">mizchi</a>によるMDXをベースにした高速化、最適化、AMP対応されたMarkdownコンパイラ。<a href="https://mizchi.dev/">mizchi.dev</a>にて活用されています。</p>
+<blockquote>
+<p><a href="https://github.com/mizchi/amdx/pull/7">a11y_fix: text-link by yamanoku · Pull Request #7 · mizchi/amdx</a></p>
+</blockquote>
+<p>Lighthouse判定でAccessibilityが100点が取れるようにテキストリンクのコントラスト比を高いものに変更するアクセシビリティ改善しました。</p>
+<h2 id="vuejs-jpjavuejsorg">vuejs-jp/ja.vuejs.org</h2>
+<p>Vue.jsの公式日本語ドキュメントサイト（現在は旧サイト扱いになっています）。</p>
+<blockquote>
+<p><a href="https://github.com/vuejs-jp/ja.vuejs.org/pull/61">docs:translate Accessibility > Basic by yamanoku · Pull Request #61 · vuejs-jp/ja.vuejs.org</a></p>
+</blockquote>
+<p>Vue.jsのメジャーバージョンが3に上がる際にドキュメントにアクセシビリティの項目が追加されたのでその翻訳対応をしました。Vue.js日本ユーザーグループの<a href="https://twitter.com/kazu_pon">kazupon</a>より他のアクセシビリティにまつわるドキュメントの翻訳レビューをしていただきたいと指名してもらったのでそちらも対応いたしました。</p>
+<h2 id="vue-a11yeslint-plugin-vuejs-accessibility">vue-a11y/eslint-plugin-vuejs-accessibility</h2>
+<p>Vue.jsでの開発時にアクセシビリティチェックするためのESLintプラグイン。</p>
+<blockquote>
+<p><a href="https://github.com/vue-a11y/eslint-plugin-vuejs-accessibility/issues/97">Do we need a no-onchange rule? · Issue #97 · vue-a11y/eslint-plugin-vuejs-accessibility</a></p>
+</blockquote>
+<p><code>@change</code>を指定する際に<code>@blur</code>も指定するようなルールだったのですが、元々はレガシーブラウザの対応のためで、参考にしていたJSXでのESLintプラグインでのルールでも<a href="https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/398">すでに非推奨になっていた</a>ため、Vue.jsでのルールも非推奨にするように提案しました。</p>
+<p>2020年の12月に提案して、2023年7月に該当するルールが非推奨扱いになりました。</p>
+<h2 id="vuejsvue-router">vuejs/vue-router</h2>
+<p>Vue.js公式のルーターライブラリ。</p>
+<blockquote>
+<p><a href="https://github.com/vuejs/vue-router/pull/3558">docs: aria-current-value type <code>"true"</code> and <code>"false"</code> by yamanoku · Pull Request #3558 · vuejs/vue-router</a></p>
+</blockquote>
+<p>（当時最新の勧告であった）WAI-ARIA 1.1仕様書では<a href="https://www.w3.org/TR/wai-aria-1.1/#aria-current"><code>aria-current</code>の設定値に<code>true</code>と<code>false</code>文字列も含まれている</a>ため、設定できることを<a href="https://router.vuejs.org/api/interfaces/RouterLinkProps.html#ariaCurrentValue">vue-routerのドキュメント</a>にも明示できるようにしました。</p>
+<h2 id="vueusevueuse">vueuse/vueuse</h2>
+<p><a href="https://github.com/antfu">Anthony Fu</a>が作成したVue Compositionユーティリティ集ライブラリ。</p>
+<blockquote>
+<p><a href="https://github.com/vueuse/vueuse/pull/652">chore(useQRCode): add alt text for Docs by yamanoku · Pull Request #652 · vueuse/vueuse</a></p>
+</blockquote>
+<p>コードサンプル内の<code>img</code>において代替テキストがなかったため追加しました。</p>
+<h2 id="zenn-devzenn-community">zenn-dev/zenn-community</h2>
+<p>Zennのユーザが要望や質問などを投稿できるリポジトリ。</p>
+<blockquote>
+<p><a href="https://github.com/zenn-dev/zenn-community/issues/53">ズーミングや拡大縮小を有効にしてほしい · Issue #53 · zenn-dev/zenn-community</a></p>
+</blockquote>
+<p>Zennでページを一部拡大して読みたい場合（主にスマートフォン）に、ズーミングや拡大縮小ができなかったためその報告をしました。</p>
+<blockquote>
+<p><a href="https://github.com/zenn-dev/zenn-community/issues/85">ログインモーダルを閉じる挙動に関する改善要望 · Issue #85 · zenn-dev/zenn-community</a></p>
+</blockquote>
+<p>ログインしていない状態で記事の下部にあるコメント欄にタブキーフォーカスするとログインモーダルが出現します。ですがキーボード操作でモーダルを閉じることができないためその報告をしました。</p>
+<blockquote>
+<p><a href="https://github.com/zenn-dev/zenn-community/issues/287">スクラップの下へジャンプボタンのキーボードフォーカス考慮 · Issue #287 · zenn-dev/zenn-community</a></p>
+</blockquote>
+<p><a href="https://zenn.dev/changelog">2021年4月12日のアップデート</a>により追加されたスクラップでコメントが多い場合に「いちばん下へジャンプ」するボタンが追加されたのですが、このボタンにキーボードフォーカスが当たるようにしてほしい要望を出しました。</p>
+<p>再現の確認としてGIFアニメーションで確認できるようにしました。</p>
+<p><img width="720" height="470" src="https://i.gyazo.com/32dc1c28094bc449aa64b4afdf9f454a.gif" alt="zenn スクラップページでのフォーカスの動き再現。いちばん下へジャンプするボタンにフォーカスが上がっていない。" loading="lazy"></p>
+<p>上記要望は対応していただいてキーボードフォーカスが当たるようになっていました。</p>
+<p><img width="460" height="160" src="https://i.gyazo.com/57af09f2160b2e761e4f962a070c468f.png" alt="スクリーンショット：「いちばん下へジャンプする」ボタンにフォーカスが当たっている" loading="lazy"></p>
+<h2 id="microcmsiomicrocms-blog">microcmsio/microcms-blog</h2>
+<p><a href="https://microcms.io/">microCMS</a>社が公開している公式ブログソース</p>
+<blockquote>
+<p><a href="https://github.com/microcmsio/microcms-blog/pull/88">Breadcrumbでカテゴリーがない場合レンダリングしないように修正 by yamanoku · Pull Request #88 · microcmsio/microcms-blog</a></p>
+</blockquote>
+<p>パンくずリストにカテゴリがない場合でもHTMLとしてレンダリングされてしまうのでその修正をしました。見た目上は違和感少ないものですが、読み上げ機能を使うと2つのリストアイテムがある状態と判定されます。これは2つ目に中身が期待されるという誤解を招きかねません。そのためカテゴリがない場合は、リストを描画しないように対応しました。</p>
+<blockquote>
+<p><a href="https://github.com/microcmsio/microcms-blog/pull/89">日付部分をtime要素でマークアップ by yamanoku · Pull Request #89 · microcmsio/microcms-blog</a></p>
+</blockquote>
+<p>日付が出る箇所は<code>&#x3C;time></code>要素でマークアップするように変更し、セマンティクスな日付情報にするようにしました。</p>
+<h2 id="rits-dajarerits-dajaregithubio">rits-dajare/rits-dajare.github.io</h2>
+<p>立命館ダジャレサークルのオフィシャルサイトソース。</p>
+<blockquote>
+<p><a href="https://github.com/rits-dajare/rits-dajare.github.io/pull/221">[IMO] ページのアクセシビリティ補強対応 by yamanoku · Pull Request #221 · rits-dajare/rits-dajare.github.io</a></p>
+</blockquote>
+<p><a href="https://ntsa.connpass.com/event/211862/">焼肉争奪戦！NU CAMP Dev&#x26;Pub LT Party</a>というイベントを拝見して、<a href="https://github.com/ygkn">ygkn</a>が発表内でサイトのアクセシビリティ対応をやってみたことについて個人的に感銘を受けました。</p>
+<p>ソースコードをオープンソースとして公開していたので、自分からもよりよくできそうなアクセシビリティ改善提案（スクリーンリーダー読み上げ考慮、ボタンの<code>aria-label</code>上書き、見出し順の訂正、<code>input</code>に紐付けるラベル）をさせてもらいました。</p>
+<h2 id="nygardkreact-share">nygardk/react-share</h2>
+<p>React.js製のソーシャルシェアボタンライブラリ。</p>
+<blockquote>
+<p><a href="https://github.com/nygardk/react-share/issues/397">ShareButton’s aria-label is interfering with what I really want to say. · Issue #397 · nygardk/react-share</a></p>
+</blockquote>
+<p>先述した立命館ダジャレサークルのアクセシビリティ改善で発見した問題点でもある、シェアボタンにある<code>aria-label</code>が実際にテキストを挿入したときとで意図しない読み上げになってしまうことが問題となりそうだったので、解決案を提示しました。</p>
+<p>この提案を行ったのが2021年の1月でしたが、2023年の11月にバージョン5をリリースするにあたりデフォルトで<code>aria-label</code>で上書きしないように対応されました。</p>
+<h2 id="tokyo-metropolitan-govcovid19">tokyo-metropolitan-gov/covid19</h2>
+<p><a href="https://stopcovid19.metro.tokyo.lg.jp/">東京都新型コロナウイルス感染症対策サイト</a>のリポジトリ。</p>
+<blockquote>
+<p><a href="https://github.com/tokyo-metropolitan-gov/covid19/pull/6446">最新のお知らせのリンクリストの見た目とマークアップの齟齬修正 by yamanoku · Pull Request #6446 · tokyo-metropolitan-gov/covid19</a></p>
+</blockquote>
+<p>以前サイトの<a href="https://engineer.crowdworks.jp/entry/product_accessibility_check">アクセシビリティチェック会</a>を有志で実施したのですが、改めてアクセシビリティ方針立てて試験して基準を満たすことが決まったため<a href="https://twitter.com/magi1125">magi1125</a>と<a href="https://twitter.com/masup9">masup9</a>が音頭を取ってアクセシビリティプレ試験会を実施し、その試験会中で上がってきたアクセシビリティ上の問題を対応したものの1つです。</p>
+<p>最新のお知らせのリンクリストが、日付の部分がリンクテキストではないスタイルなのにリンクの一部になっていて、見た目やインタラクション（hover）に差があるのでセマンティクスにも差が必要となっている問題を修正しました。</p>
+<blockquote>
+<p><a href="https://github.com/tokyo-metropolitan-gov/covid19/issues/6848">ビルド時のアクセシビリティ lint 導入の検討 · Issue #6848 · tokyo-metropolitan-gov/covid19</a></p>
+</blockquote>
+<p>ビルド時のアクセシビリティLinterを導入する提案ではmagi1125から直接ご指名いただいたので私が分かりうる限りでアドバイスさせていただきました。</p>
+<h2 id="sno2wmantohohoify">SnO2WMaN/tohohoify</h2>
+<p><a href="https://twitter.com/SnO2WMaN">SnO2WMaN</a>作のアイリスアウト（画面を丸く閉じながら暗転させる手法）のような画像を生成するジェネレーター。</p>
+<p><img width="720" height="376" src="https://i.gyazo.com/7d69f2e4610112ae654bf628ef568ef9.png" alt="tohohoifyで生成されたアイリスアウト風の画像" loading="lazy"></p>
+<blockquote>
+<p><a href="https://github.com/SnO2WMaN/tohohoify/pull/20">fix: Axe DevTools Critical Issues by yamanoku · Pull Request #20 · SnO2WMaN/tohohoify</a></p>
+</blockquote>
+<p><a href="https://chrome.google.com/webstore/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd">aXe DevTools</a>でCriticalなアクセシビリティ上の問題となっていた箇所を修正したものです。</p>
+<h2 id="kawamataryoanimated-emoji-gen">kawamataryo/animated-emoji-gen</h2>
+<p><a href="https://twitter.com/KawamataRyo">Kawamata Ryo</a>による動くSlack絵文字のGIFを作ることができるアプリ。</p>
+<blockquote>
+<p><a href="https://github.com/kawamataryo/animated-emoji-gen/pull/11">fix: axe DevTools Critical Issues by yamanoku · Pull Request #11 · kawamataryo/animated-emoji-gen</a></p>
+</blockquote>
+<p>上記のtohohoifyと同様に<a href="https://chrome.google.com/webstore/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd">aXe DevTools</a>でCriticalなアクセシビリティ上の問題となっていた箇所を修正したものです。</p>
+<h2 id="yuisekicrisis-news-map-next">yuiseki/crisis-news-map-next</h2>
+<p><a href="https://twitter.com/yuiseki_">yuiseki</a>による全国災害情報地図サイト</p>
+<blockquote>
+<p><a href="https://github.com/yuiseki/crisis-news-map-next/pull/23">ニュース記事でのカテゴリラジオボタンをグループ化 by yamanoku · Pull Request #23 · yuiseki/crisis-news-map-next</a></p>
+</blockquote>
+<p>災害関連ニュース記事ページでのラジオボタン操作のアクセシビリティを向上させるために、ラジオボタンをグループ化しました。キーボード操作の充実化とグループ化でスクリーンリーダーによる読み上げがよりわかりやすくなるようになりました。</p>
+<h2 id="miyaokaemployment-ojisan">miyaoka/employment-ojisan</h2>
+<p><a href="https://twitter.com/miyaoka">miyaoka</a>による<a href="https://twitter.com/sadnessOjisan">sadnessOjisan</a>が就職するまでのカウントダウンサイト。</p>
+<blockquote>
+<p><a href="https://github.com/miyaoka/employment-ojisan/pull/2">読み上げ対応 by yamanoku · Pull Request #2 · miyaoka/employment-ojisan</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://github.com/miyaoka/employment-ojisan/pull/6">img に alt 入れた by yamanoku · Pull Request #6 · miyaoka/employment-ojisan</a></p>
+</blockquote>
+<p>詳細は<a href="https://zenn.dev/miyaoka/articles/dfb1ea778d43c6">【ネタアプリ】就職カウントダウンサイトを作った話</a>を参考いただければと思いますが、その中で私はアクセシビリティ対応をしました。</p>
+<h2 id="microcmsioreact-hooks-use-modal">microcmsio/react-hooks-use-modal</h2>
+<p><a href="https://microcms.io/">microCMS</a>社のReact Hooksを用いてモーダルを呼び出すライブラリ。</p>
+<blockquote>
+<p><a href="https://github.com/microcmsio/react-hooks-use-modal/pull/26">Improve accessibility by dqn · Pull Request #26 · microcmsio/react-hooks-use-modal</a></p>
+</blockquote>
+<p>上記のアクセシビリティ対応自体は<a href="https://github.com/dqn">dqn</a>によるもので私によるものではないですが、老婆心でアクセシビリティレビューを勝手にしてしまいました。</p>
+<blockquote>
+<p><a href="https://github.com/microcmsio/react-hooks-use-modal/issues/27"><code>close()</code> useCallback does not work with the button spacebar · Issue #27 · microcmsio/react-hooks-use-modal</a></p>
+</blockquote>
+<p>ボタンをキーボード操作する際にエンターキーでは機能するのですが、モーダル内ではスペースキーでは機能しなかったのでバグとして報告しました。</p>
+<h2 id="sergeicodesa11ymyths">sergeicodes/a11ymyths</h2>
+<p>アクセシビリティにまつわる謬説（まちがった説や説明）をまとめたサイト。</p>
+<blockquote>
+<p><a href="https://github.com/sergeicodes/a11ymyths/pull/12">Add Japanese version. by yamanoku · Pull Request #12 · sergeicodes/a11ymyths</a></p>
+</blockquote>
+<p>MITとして公開されていたのでフォークして独自で日本語版を公開したところ、オーナーの<a href="https://github.com/sergeicodes">Sergei Kriger</a>が日本語版でコントリビューションしませんか？と誘われたので別途Pull Requestを作成しました。</p>
+<h2 id="react-hook-formreact-hook-form">react-hook-form/react-hook-form</h2>
+<p>React Hooksでのフォームの状態管理・バリデーションをするライブラリ。</p>
+<p><a href="https://github.com/orgs/react-hook-form/discussions/5444">Suggest: Moving the Accessibility (A11y) item in Advanced Usage to Get Started. · react-hook-form · Discussion #5444</a></p>
+<p>ドキュメントにはアクセシビリティに関する項目があったのですが、WAI-ARIAによるものでReact Hook Form APIの上級者向けの扱いとしてのものではないと感じたため、Advanced UsageではなくGet Startedの「Handle errors」項目に移動する提案をしました。</p>
+<p>作者とメンテナーでもある<a href="https://github.com/bluebill1049">Beier (Bill)</a>よりアクセシビリティは高度なものであるという考えが示されましたが、<a href="https://github.com/orgs/react-hook-form/discussions/5444#discussioncomment-3715850">Peter Coleより賛同するコメント</a>をしていただき、最終的にドキュメントを変更してもらいました。</p>
+<h2 id="sadnessojisantwiogp">sadnessOjisan/twiogp</h2>
+<p><a href="https://twitter.com/sadnessOjisan">sadnessOjisan</a>によるTwitter（現：X）でURLから展開されてOGPが表示される仕組みを活かしたプロダクト。</p>
+<blockquote>
+<p><a href="https://github.com/sadnessOjisan/twiogp/pull/11">twitter:image:alt 対応 by yamanoku · Pull Request #11 · sadnessOjisan/twiogp</a></p>
+</blockquote>
+<p>Twitter Cardでの代替テキストを付与するための<code>twitter:image:alt</code>を設定するようにしました。</p>
+<h2 id="deno-jadeno-ja">deno-ja/deno-ja</h2>
+<p><a href="https://deno.com/">Deno</a>の日本ユーザによるオンラインコミュニティのランディングページ。</p>
+<blockquote>
+<p><a href="https://github.com/deno-ja/deno-ja/pull/4"><code>&#x3C;html lang="ja"></code> 設定にする by yamanoku · Pull Request #4 · deno-ja/deno-ja</a></p>
+</blockquote>
+<p><a href="https://fresh.deno.dev/">Fresh</a>でのデフォルト設定では<code>lang="en"</code>になっており、日本ユーザ向けサイトなので<code>lang="ja"</code>になるように変更しました。</p>
+<h2 id="storybookjsstorybook">storybookjs/storybook</h2>
+<p>UIコンポーネントをカタログ化して管理・開発するためのツール。</p>
+<blockquote>
+<p><a href="https://github.com/storybookjs/storybook/pull/21021">fix: skip to canvas link style by yamanoku · Pull Request #21021 · storybookjs/storybook</a></p>
+</blockquote>
+<p>Storybookにはサイドバーにキャンバスへのスキップリンクが存在します。サイドバーに登録されているロゴが縦長の場合や横幅を広げた場合にスキップリンクが表示されることがありました。</p>
+<figure>
+  <img src="https://user-images.githubusercontent.com/845031/205020926-36bf316d-b901-4faf-9c89-082f006e0694.png" alt="サイドバーに登録されているロゴが縦長の場合にスキップリンクが表示されているスクリーンショット" width="640">
+  <figcaption><a href="https://github.com/storybookjs/storybook/pull/15740#issuecomment-1333496719">該当Issue</a>より引用</figcaption>
+</figure>
+<p>このスキップリンクの表示方法を<code>opacity</code>で管理するようにして、上記問題点を解消しました。</p>
+<hr>
+<p>以上が、これまで私がオープンソースプロジェクトへ行ってきたアクセシビリティに関するコントリビュートの紹介です。</p>
+<p>最初は、自身が持つアクセシビリティに関する知識を活かし、ドキュメントの日本語翻訳から始めました。その後、様々なサイトやプロダクトのアクセシビリティ改善や提案を行ってきました。これらの経験は、実際の業務にも大いに役立ち、アクセシビリティに関する知識や経験を深めることができました。</p>
+<p>私の経験が、皆さんにとってオープンソースプロジェクトへのアクセシビリティコントリビュートへの興味を引き起こすきっかけになれば嬉しいです。しかしながら、注意していただきたい点もあります。</p>
+<p>今回紹介したコントリビュートは、マージされたり採用された例です。しかし、マージされなかった提案も当然存在します。</p>
+<p>オープンソースへの修正や提案は、そのプロジェクトのポリシーに沿っていれば自由に行えます。ただし、時には求められている対応とは異なる場合や、メンテナからの反応がない場合もあり、必ずしもマージ・採用されるとは限りません。</p>
+<p>そうした場合には、自分でフォークしたオープンソースとして公開する方法もありますが、その際は自身でのメンテナンスが必要となり、元ソースの方が引き続き参照される可能性もあります。アクセシビリティに対するオープンソースへのコントリビュートに興味がある方は、これらの点を考慮して取り組んでみてください。</p>
+<p>今後も私は可能な限りオープンソースへのアクセシビリティコントリビュートを続けていきたいと考えています。皆さんも、ぜひオープンソースへのアクセシビリティコントリビュートに挑戦してみてください。</p> </article> <details data-astro-cid-yvbahnfj> <summary data-astro-cid-yvbahnfj>この記事に関する修正依頼</summary> <ul data-astro-cid-yvbahnfj> <li data-astro-cid-yvbahnfj> <a href="https://github.com/yamanoku/2023/issues/new?title=「オープンソースへのアクセシビリティコントリビュート振り返り」の修正依頼&#38;labels=feedback&#38;body=URL：https://2023.yamanoku.net/2023-12-03%0A修正依頼内容：%0A" target="_blank" data-astro-cid-yvbahnfj>
+GitHub Issueを作成する
+</a> </li> <li data-astro-cid-yvbahnfj> <a href="https://twitter.com/intent/tweet?url=https://2023.yamanoku.net/2023-12-03&#38;text=@yamanoku" target="_blank" data-astro-cid-yvbahnfj>
+著者にポストする
+</a> </li> </ul> </details> <a href="/" data-astro-cid-yvbahnfj>トップへ戻る</a> </main> <footer data-astro-cid-sz7xmlte> <p data-astro-cid-sz7xmlte>&copy; Copyright 2023, Okuto Oyama</p> <p data-astro-cid-sz7xmlte>
+Source :
+<a href="https://github.com/yamanoku/2023/" target="_blank" rel="noopener" data-astro-cid-sz7xmlte>yamanoku/2023</a> </p> </footer>  </body></html>

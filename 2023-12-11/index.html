@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="ja" data-astro-cid-yvbahnfj> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/x-icon" href="/favicon.ico"><title>TailwindCSSに関する私の考えやスタンス | yamanoku Advent Calendar 2023</title><meta name="title" content="TailwindCSSに関する私の考えやスタンス | yamanoku Advent Calendar 2023"><meta name="description" content="TailwindCSSに対してどういうポジションなのか探りを入れられるのは正直ダルいです"><meta property="og:type" content="website"><meta property="og:url" content="https://2023.yamanoku.net/2023-12-11/"><meta property="og:title" content="TailwindCSSに関する私の考えやスタンス | yamanoku Advent Calendar 2023"><meta property="og:description" content="TailwindCSSに対してどういうポジションなのか探りを入れられるのは正直ダルいです"><meta property="og:image" content="https://2023.yamanoku.net/ogp-image.png"><meta property="twitter:card" content="summary"><meta property="twitter:url" content="https://2023.yamanoku.net/2023-12-11/"><meta property="twitter:title" content="TailwindCSSに関する私の考えやスタンス | yamanoku Advent Calendar 2023"><meta property="twitter:description" content="TailwindCSSに対してどういうポジションなのか探りを入れられるのは正直ダルいです"><meta property="twitter:image" content="https://2023.yamanoku.net/ogp-image.png"><link rel="stylesheet" href="/_astro/_slug_.xEav6_Ut.css" />
+<style>.footnotes{position:relative;padding-top:var(--y-rhythm-3)}.footnotes:before{content:"";width:100%;height:1px;background-color:var(--y-arcticle-border-color);position:absolute;top:0;left:0}.footnotes h2{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}.footnotes li p{margin:0}.notes[data-astro-cid-yvbahnfj]{margin:var(--y-rhythm-3) 0}.article-header[data-astro-cid-yvbahnfj]{display:flex;flex-wrap:wrap;justify-content:space-between;margin:calc(var(--y-rhythm-2) * -1);padding:0}.article-header[data-astro-cid-yvbahnfj]>[data-astro-cid-yvbahnfj]{margin:var(--y-rhythm-2)}.bread-crumbs[data-astro-cid-yvbahnfj]{margin:var(--y-rhythm-3) 0}
+</style></head> <body data-astro-cid-yvbahnfj> <header data-astro-cid-3ef6ksr2> <div class="header-logo-link-block" data-astro-cid-3ef6ksr2> <svg class="header-logo-image" width="48" height="48" viewBox="0 0 246 242" role="img" aria-label="yamanoku" data-astro-cid-3ef6ksr2> <style>
+        .path {
+          fill: rgb(54, 70, 93);
+          fill-rule: evenodd;
+        }
+        @media (prefers-color-scheme: dark) {
+          .path {
+            fill: var(--y-white-base);
+          }
+        }
+      </style> <path class="path" d="M64,67v54l82,82-46,46v60h56L310,155V96H230l-21,20L160,67H64ZM176,203l-45,46h25L293,113H230l-39,39-31-31H94Z" transform="translate(-64 -67)" data-astro-cid-3ef6ksr2></path> </svg> <span data-astro-cid-3ef6ksr2>Advent Calendar 2023</span> </div> </header>  <main data-astro-cid-yvbahnfj> <article data-astro-cid-yvbahnfj> <div data-astro-cid-yvbahnfj> <time datetime="2023-12-11" data-astro-cid-yvbahnfj>2023-12-11</time> </div> <h1 class="title" data-astro-cid-yvbahnfj><span style="word-break: keep-all; overflow-wrap: anywhere;">TailwindCSSに​関する​私の​考えや​スタンス</span></h1> <p data-astro-cid-yvbahnfj>この記事は<a href="https://adventar.org/calendars/8589" data-astro-cid-yvbahnfj>yamanoku Advent Calendar 2023</a>の11日目の記事になります。</p> <p>以前とある方と1on1をしていた際に「yamanokuさんってTailwind CSSアンチだと思っていた」という旨の発言がありました。何故そういうイメージがあったのかは分かりませんが、私は別にアンチではありません。逆に特段思い入れがあるというわけでもないですが…。</p>
+<p>そこで今回はTailwind CSSに対する私の考えやスタンスについてを書いてみようと思います。</p>
+<h2 id="かつて考えていた設計思想と近く親近感がある">かつて考えていた設計思想と近く、親近感がある</h2>
+<p>私がWeb制作の仕事をしていた2017年頃、CSS設計思想としてBEMやFLOCSSといったものがある中で、そうした考え方を使わない「使いまわせるCSS」についてを考えていました。</p>
+<blockquote>
+<p><a href="https://archives.yamanoku.net/i-think-reuse-css">最近考えてる「使いまわせるCSS」について | yamanoku.net</a></p>
+</blockquote>
+<p>要素の空き・余白の関係性を示すためにそれぞれの値を定義したり、ボタンの幅についてもクラス名で決め打ちで定義するようにしたりと、いわゆるユーティリティファーストなCSSを書くのがよいのではないか、と考えていた事がありました。</p>
+<pre class="language-css"><code is:raw="" class="language-css"><span class="token selector">.mt-10</span> <span class="token punctuation">{</span>
+  <span class="token property">margin-top</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.mt-100</span> <span class="token punctuation">{</span>
+  <span class="token property">margin-top</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.pt-10</span> <span class="token punctuation">{</span>
+  <span class="token property">padding-top</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.pt-100</span> <span class="token punctuation">{</span>
+  <span class="token property">padding-top</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class="language-css"><code is:raw="" class="language-css"><span class="token selector">.btn-w200</span> <span class="token punctuation">{</span>
+  <span class="token property">max-width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>あまりCSSクラス自体に広い責任をもたせず、その場その場で必要なものをプロパティをもつ単体のクラスを定義する、いわゆるYAGNIのような考え方でした。この頃はまだTailwind CSSは存在していませんでしたが、当時はユーティリティだけで表現するようにしたい考えをもっていたので、考え方が近いことに親近感をもっていました。</p>
+<h2 id="スタイル表現横に伸ばすか縦に伸ばすか">スタイル表現、横に伸ばすか縦に伸ばすか</h2>
+<p>Tailwind CSSを使う際に、HTMLへの記述量が増えていくことに違和感をもつことはあると思います。実際のコード例をみるためにとあるサインインフォームを想定してみましょう。</p>
+<p><img width="720" height="568" src="https://i.gyazo.com/85f8040534019a309a8c605dea8e90c9.png" alt="ユーザーネームとパスワードのテキストボックスとSign inと書かれた送信ボタンが並ぶサインインフォーム。フォーム内部は白背景で外枠は角丸になっており薄いシャドウボックスがつけられている。" loading="lazy"></p>
+<p>このサインインフォームをTailwind CSSでスタイリングすると以下のようなコードになります。</p>
+<!-- prettier-ignore-start -->
+<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex min-h-screen flex-col items-center justify-center bg-gray-100<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex w-full max-w-md flex-col items-center justify-center rounded-lg bg-white px-4 py-8 shadow-md<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text-3xl font-bold text-gray-700<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Sign in<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>form</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mt-4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mb-4 flex flex-col<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mb-2 font-bold text-gray-800<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Username<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>label</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>rounded-md border border-gray-200 px-3 py-2 focus:border-indigo-500 focus:outline-none<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Enter your username<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mb-4 flex flex-col<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>label</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mb-2 font-bold text-gray-800<span class="token punctuation">"</span></span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Password<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>label</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>rounded-md border border-gray-200 px-3 py-2 focus:border-indigo-500 focus:outline-none<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>password<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Enter your password<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>rounded-md bg-indigo-500 px-4 py-2 text-white hover:bg-indigo-600 focus:bg-indigo-600 focus:outline-none<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Sign in<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>form</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<!-- prettier-ignore-end -->
+<p>たしかにHTMLのclassへの記述量が増えています。この表現をCSSで行う場合は以下のようになります。</p>
+<pre class="language-css"><code is:raw="" class="language-css"><span class="token selector">.sign-in-form</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">min-height</span><span class="token punctuation">:</span> 100vh<span class="token punctuation">;</span>
+  <span class="token property">flex-direction</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
+  <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>243 244 246<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.sign-in-form__inner</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">max-width</span><span class="token punctuation">:</span> 28rem<span class="token punctuation">;</span> <span class="token comment">/* 448px */</span>
+  <span class="token property">flex-direction</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
+  <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">justify-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 2rem 1rem<span class="token punctuation">;</span> <span class="token comment">/* 32px 16px */</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>255 255 255<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 0.5rem<span class="token punctuation">;</span> <span class="token comment">/* 8px */</span>
+  <span class="token property">box-shadow</span><span class="token punctuation">:</span>
+    0 4px 6px -1px <span class="token function">rgb</span><span class="token punctuation">(</span>0 0 0 / 0.1<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    0 2px 4px -2px <span class="token function">rgb</span><span class="token punctuation">(</span>0 0 0 / 0.1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.sign-in-form__title</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 1.875rem<span class="token punctuation">;</span> <span class="token comment">/* 30px */</span>
+  <span class="token property">line-height</span><span class="token punctuation">:</span> 2.25rem<span class="token punctuation">;</span> <span class="token comment">/* 36px */</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> 700<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>55 65 81<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.sign-in-form__form</span> <span class="token punctuation">{</span>
+  <span class="token property">margin-top</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span> <span class="token comment">/* 16px */</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.sign-in-form__form-item</span> <span class="token punctuation">{</span>
+  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span> <span class="token comment">/* 16px */</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">flex-direction</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.sign-in-form__form-label</span> <span class="token punctuation">{</span>
+  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 0.5rem<span class="token punctuation">;</span> <span class="token comment">/* 8px */</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> 700<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>31 41 55<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.sign-in-form__form-input</span> <span class="token punctuation">{</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 0.375rem<span class="token punctuation">;</span> <span class="token comment">/* 6px */</span>
+  <span class="token property">border-width</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>229 231 235<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0.5rem 0.75rem<span class="token punctuation">;</span> <span class="token comment">/* 8px 12px */</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.sign-in-form__form-input:focus</span> <span class="token punctuation">{</span>
+  <span class="token property">outline</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>99 102 241<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.sign-in-form__submit-button</span> <span class="token punctuation">{</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 0.375rem<span class="token punctuation">;</span> <span class="token comment">/* 6px */</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>99 102 241<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0.5rem 1rem<span class="token punctuation">;</span> <span class="token comment">/* 8px 16px */</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>255 255 255<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 0.25rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.sign-in-form__submit-button:hover</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>79 70 229<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.sign-in-form__submit-button:focus</span> <span class="token punctuation">{</span>
+  <span class="token property">outline</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>79 70 229<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>これらを比較した時に、極端で乱暴な言い方をしてしまえば、CSSで表現するものが<strong>横に伸びるか、縦に伸びるか</strong>の違いなだけに見えます。</p>
+<p>私はCSSで記述するよりも、Tailwind CSSのような表現を使うことで<strong>そのHTMLにどれだけ表現が集中しているかの責務</strong>がよりわかりやすくなるのではないかなとも思っています。</p>
+<h2 id="書き方の特殊さは慣れでどうにかなると思っている">書き方の特殊さは慣れでどうにかなると思っている</h2>
+<p>Tailwind CSSで使用できるクラス名はCSSプロパティ名を継承するようにはなっていると思いますが、一部はそれに沿っていないものもあります。私も最初Tailwind CSSを使ってスタイルを定義するようにしたときに<code>font-size</code>や<code>color</code>の指定が<code>text-xx</code>のような形であったことには違和感がありました。</p>
+<p>ただ、この部分は慣れによるものかなと思います。脳内のワーキングメモリーとして覚えきれないような場合は、<a href="https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss">Tailwind CSS IntelliSense</a>を活用してコードを補完してもらうなど、機械的な仕組みに任せるようしたほうが良いでしょう。</p>
+<h2 id="ルールが定まってない中で使いだすのは難しい">ルールが定まってない中で使いだすのは難しい</h2>
+<p>具体的にスタイルの定義においてルール化されていないフロントエンド開発でいきなりTailwind CSSを使用するにはノイズが大きくなりそうな気がしています。</p>
+<p>CSS（この場合はクラス名やそこの責務について）を書きたくないというモチベーションが高い人であれば親和性は高いかもしれませんが、CSSを一から書いたほうが分かりやすい人も居たり、Tailwind CSSの慣習から逸脱したいと考える場合に認知負荷が高まっていきどこかで破綻していきそうです。「<a href="https://tailwindcss.com/docs/adding-custom-styles#using-arbitrary-values">Arbitrary Values</a>」という表現力を使うことで、柔軟な値に対応できるようになりますが、考えなしに多用することは無秩序なコードだらけになりやすいため注意が必要です。</p>
+<p>Tailwind CSSを導入するのであれば、その前にスタイルの定義についてルールを定めておいた方が良いと思っています。もしそういうのが定まっていない状態であれば、使用範囲を限定する方向に倒したほうが良さそうです。</p>
+<h2 id="tailwind-cssは技術的負債になりうるのか">Tailwind CSSは技術的負債になりうるのか</h2>
+<p>Tailwind CSSがCSS表現をロックインしてしまい他の技術へ移行することができない技術的負債になると懸念する声もあります。ですが私はそこまで懸念されるほどのものなのかがピンと来ていません。もしTailwind CSSを除去する場合は依存するクラス名だけを抽出して削除することで他画面には影響なく安心して消すことができるはずなので、むしろ取り扱うのは容易な方だと思っています。</p>
+<p>それよりかはTailwind CSSの作法と独自のCSS記法などが混在しているなど、コーディングルールから逸脱するようなものがあれば剥がしにくくなると思います。前述したようにどのようなやり方でスタイルを定義するかのルールを定めておくことが技術的負債を産まない点で大事なのではないかなと思っています。</p>
+<h2 id="デザイントークンを定義する手法として参考になる">デザイントークンを定義する手法として参考になる</h2>
+<p>デザイントークンとはデザインシステムを構築する上での要素の1つで、色やスペーシング、タイポグラフィのスケールなどをガイドラインから基づいて定数で表現し使われるものです。色のデザイントークンが定義されている場合、デザイナーやエンジニアでの会話は「薄いグレー（<code>#d1d5db</code>）や濃いグレー（<code>#374151</code>）」といったものから「<code>gray-300</code>や<code>gray-700</code>」という表現で行えるようになります。このようにデザイントークンはデザイナーやエンジニアが同じ言葉でそのイメージを共有できるようになるメリットがあります。</p>
+<p>Tailwind CSSではそうした色やスペーシング、タイポグラフィを定数で管理するようにしているため、デザイントークンを定義するときの参考になるのではないかなと思っています。設定ファイルである<code>tailwind.config.js</code>の<code>theme</code>を編集することで元の定義を変えたり、あるいは新たに定義を追加することができます。</p>
+<pre class="language-js"><code is:raw="" class="language-js"><span class="token comment">/** @type {import('tailwindcss').Config} */</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">theme</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">extend</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">colors</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">brand</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token literal-property property">blue</span><span class="token operator">:</span> <span class="token string">'#67e8f9'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bg-brand-blue<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>ブランドカラーの青を使った背景<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<h2 id="github-copilotとの組み合わせでプロトタイプの爆速実装">GitHub Copilotとの組み合わせでプロトタイプの爆速実装</h2>
+<p>GitHub Copilotを用いて、こうした表現をしたいというプロンプトと共にTailwind CSSを使用することで自動的にコードを生成してくれます。</p>
+<pre class="language-plaintext"><code is:raw="" class="language-plaintext">プロンプト：カードUIをTailwindCSSで作りたい</code></pre>
+<!-- prettier-ignore-start -->
+<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token comment">&#x3C;!-- 生成時の画像ソースのURLは404だったためそこだけ差し替えました --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>img</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>w-full h-56 object-cover object-center<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://placehold.jp/640x480.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>カード画像<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>p-4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h2</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text-xl font-semibold text-gray-800<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>カードのタイトル<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h2</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mt-2 text-gray-600<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>カードの説明文が入ります。<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<!-- prettier-ignore-end -->
+<figure>
+  <img src="https://i.gyazo.com/61cbaefc9ec36e03270d62253fc95f6c.png" alt="GitHub Copilotにより生成されたカードUI。カード全体は角丸になっていてダミー画像が入った後にタイトルと説明文の順番で並んでおりその部分は白背景になっている。" width="480" loading="lazy">
+  <figcaption>GitHub Copilotにより生成されたカードUI</figcaption>
+</figure>
+<p>ちなみに「スタイル表現、縦に伸ばすか横に伸ばすか」の章にあったサインインフォームのコードもすべてCopilotによって生成されたものです（私は何も考えていません！）。</p>
+<p>何らかのUIライブラリを検討したりデザインを起こす間もなく、プロトタイピングなどのスピード感を求める実装をする場合には組み合わせとしては有用なのではないかなと思います。</p>
+<h2 id="結論">結論</h2>
+<p>Tailwind CSSも単なるツールなので、用法用量を守って正しく使っていきましょう。</p>
+<p>加えて、人に対してよく分からずにアンチとかいうラベルを貼りつけないようにも気をつけましょう。</p> </article> <details data-astro-cid-yvbahnfj> <summary data-astro-cid-yvbahnfj>この記事に関する修正依頼</summary> <ul data-astro-cid-yvbahnfj> <li data-astro-cid-yvbahnfj> <a href="https://github.com/yamanoku/2023/issues/new?title=「TailwindCSSに関する私の考えやスタンス」の修正依頼&#38;labels=feedback&#38;body=URL：https://2023.yamanoku.net/2023-12-11%0A修正依頼内容：%0A" target="_blank" data-astro-cid-yvbahnfj>
+GitHub Issueを作成する
+</a> </li> <li data-astro-cid-yvbahnfj> <a href="https://twitter.com/intent/tweet?url=https://2023.yamanoku.net/2023-12-11&#38;text=@yamanoku" target="_blank" data-astro-cid-yvbahnfj>
+著者にポストする
+</a> </li> </ul> </details> <a href="/" data-astro-cid-yvbahnfj>トップへ戻る</a> </main> <footer data-astro-cid-sz7xmlte> <p data-astro-cid-sz7xmlte>&copy; Copyright 2023, Okuto Oyama</p> <p data-astro-cid-sz7xmlte>
+Source :
+<a href="https://github.com/yamanoku/2023/" target="_blank" rel="noopener" data-astro-cid-sz7xmlte>yamanoku/2023</a> </p> </footer>  </body></html>

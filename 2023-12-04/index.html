@@ -1,0 +1,256 @@
+<!DOCTYPE html><html lang="ja" data-astro-cid-yvbahnfj> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/x-icon" href="/favicon.ico"><title>button要素のtype属性について気にしたくないけどそうもいかない話 | yamanoku Advent Calendar 2023</title><meta name="title" content="button要素のtype属性について気にしたくないけどそうもいかない話 | yamanoku Advent Calendar 2023"><meta name="description" content="type属性の指定があまり重要視されていない現状にモヤッたので言語化してみた"><meta property="og:type" content="website"><meta property="og:url" content="https://2023.yamanoku.net/2023-12-04/"><meta property="og:title" content="button要素のtype属性について気にしたくないけどそうもいかない話 | yamanoku Advent Calendar 2023"><meta property="og:description" content="type属性の指定があまり重要視されていない現状にモヤッたので言語化してみた"><meta property="og:image" content="https://2023.yamanoku.net/ogp-image.png"><meta property="twitter:card" content="summary"><meta property="twitter:url" content="https://2023.yamanoku.net/2023-12-04/"><meta property="twitter:title" content="button要素のtype属性について気にしたくないけどそうもいかない話 | yamanoku Advent Calendar 2023"><meta property="twitter:description" content="type属性の指定があまり重要視されていない現状にモヤッたので言語化してみた"><meta property="twitter:image" content="https://2023.yamanoku.net/ogp-image.png"><link rel="stylesheet" href="/_astro/_slug_.xEav6_Ut.css" />
+<style>.footnotes{position:relative;padding-top:var(--y-rhythm-3)}.footnotes:before{content:"";width:100%;height:1px;background-color:var(--y-arcticle-border-color);position:absolute;top:0;left:0}.footnotes h2{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}.footnotes li p{margin:0}.notes[data-astro-cid-yvbahnfj]{margin:var(--y-rhythm-3) 0}.article-header[data-astro-cid-yvbahnfj]{display:flex;flex-wrap:wrap;justify-content:space-between;margin:calc(var(--y-rhythm-2) * -1);padding:0}.article-header[data-astro-cid-yvbahnfj]>[data-astro-cid-yvbahnfj]{margin:var(--y-rhythm-2)}.bread-crumbs[data-astro-cid-yvbahnfj]{margin:var(--y-rhythm-3) 0}
+</style></head> <body data-astro-cid-yvbahnfj> <header data-astro-cid-3ef6ksr2> <div class="header-logo-link-block" data-astro-cid-3ef6ksr2> <svg class="header-logo-image" width="48" height="48" viewBox="0 0 246 242" role="img" aria-label="yamanoku" data-astro-cid-3ef6ksr2> <style>
+        .path {
+          fill: rgb(54, 70, 93);
+          fill-rule: evenodd;
+        }
+        @media (prefers-color-scheme: dark) {
+          .path {
+            fill: var(--y-white-base);
+          }
+        }
+      </style> <path class="path" d="M64,67v54l82,82-46,46v60h56L310,155V96H230l-21,20L160,67H64ZM176,203l-45,46h25L293,113H230l-39,39-31-31H94Z" transform="translate(-64 -67)" data-astro-cid-3ef6ksr2></path> </svg> <span data-astro-cid-3ef6ksr2>Advent Calendar 2023</span> </div> </header>  <main data-astro-cid-yvbahnfj> <article data-astro-cid-yvbahnfj> <div data-astro-cid-yvbahnfj> <time datetime="2023-12-04" data-astro-cid-yvbahnfj>2023-12-04</time> </div> <h1 class="title" data-astro-cid-yvbahnfj><span style="word-break: keep-all; overflow-wrap: anywhere;">button要素の​type属性に​ついて​気に​したくないけど​そうも​いかない​話</span></h1> <p data-astro-cid-yvbahnfj>この記事は<a href="https://adventar.org/calendars/8589" data-astro-cid-yvbahnfj>yamanoku Advent Calendar 2023</a>の4日目の記事になります。</p> <p>皆さんは<code>&#x3C;button></code>要素を書く時に<code>type</code>属性を書くこと気にしてますか？</p>
+<p>私は気にしてます。気にしすぎているほどに。</p>
+<h2 id="なぜ気にしているのか">なぜ気にしているのか</h2>
+<p><code>&#x3C;button></code>要素には<code>type</code>属性があります。この<code>type</code>属性はデフォルトの値が<code>submit</code>になっています。送信目的ではなくJavaScriptと組み合わせたインタラクションが目的（例えば要素を開閉するなどの挙動）の場合は<code>type</code>属性を<code>button</code>とする必要があります。その他にもフォーム内容をリセットさせる<code>reset</code>という値もあります。</p>
+<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>送信する<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>開閉する<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>reset<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>リセットする<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<p>この指定がない場合に困る問題としてコンポーネントとして扱っている際に親要素に<code>&#x3C;form></code>要素があると送信ボタンとして認識されて実装時に予期せぬ挙動になることがあります。</p>
+<blockquote>
+<p>alertを出したあと一旦console.logするだけにしたのですが<br>
+なぜか画面がリロードされてしまう。。。（URLの最後に?がつくのでget通信しようとしているようにみえる）</p>
+<p><a href="https://qiita.com/haruraruru/items/53614e739437bf7e5b1c">buttonタグで勝手にリロードされてしまう(vue.js) #JavaScript - Qiita</a></p>
+</blockquote>
+<blockquote>
+<p>これ、ひとつのコンポーネントの template で form と button が同時に出てきていたら比較的探しやすいんだけど、コンポーネントが入れ子になっているとかなり見つけにくいということが分かった。</p>
+<p><a href="https://random.tagucch.dev/posts/2021-10-19">buttonタグで勝手にリロードされてしまう問題</a></p>
+</blockquote>
+<p>この挙動自体はHTMLの挙動になるのですが、JavaScriptと一緒に扱っている場合はどこに問題があるのか一見して分からなくなる可能性があります。そうしたヒューマンエラーを防ぐためにも<code>type</code>属性を明示的に指定することが重要だと思っています。</p>
+<p>ただし以下のように<code>&#x3C;form></code>要素の中で使う場合は送信ボタンとして自明なのでその場合は<code>type</code>を省略しても問題ないと思っています。</p>
+<!-- prettier-ignore-start -->
+<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>form</span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>label</span><span class="token punctuation">></span></span>
+    名前
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submitted-name<span class="token punctuation">"</span></span> <span class="token attr-name">autocomplete</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>label</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span><span class="token punctuation">></span></span>保存<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>form</span><span class="token punctuation">></span></span></code></pre>
+<!-- prettier-ignore-end -->
+<blockquote>
+<p><a href="https://developer.mozilla.org/ja/docs/Web/HTML/Element/form">&#x3C;form>: フォーム要素 - HTML: ハイパーテキストマークアップ言語 | MDN</a></p>
+</blockquote>
+<h2 id="サンプルコードでtype属性が明示されていないものがある">サンプルコードで<code>type</code>属性が明示されていないものがある</h2>
+<p>技術ブログやドキュメントなどのサンプルコードで<code>type</code>属性が明示されていないことがあります。私はネット上にある情報を収集するのが好きなので色々なものを見るのですが、ボタンの使い方として明示されていないものを見ると気になってしょうがありません。</p>
+<p>以下はSWRのブログ記事のサンプルコードです。<code>type</code>属性が省略されています。</p>
+<!-- prettier-ignore-start -->
+<pre class="language-jsx"><code is:raw="" class="language-jsx"><span class="token keyword">const</span> <span class="token punctuation">{</span> mutate<span class="token punctuation">,</span> data <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useSWR</span><span class="token punctuation">(</span><span class="token string">'/api/todos'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>ul</span><span class="token punctuation">></span></span><span class="token punctuation">{</span><span class="token comment">/* Display data */</span><span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>ul</span><span class="token punctuation">></span></span><span class="token plain-text">
+
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">mutate</span><span class="token punctuation">(</span><span class="token function">addNewTodo</span><span class="token punctuation">(</span><span class="token string">'New Item'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">optimisticData</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token operator">...</span>data<span class="token punctuation">,</span> <span class="token string">'New Item'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+    Add New Item
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span><span class="token plain-text">
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span></span><span class="token punctuation">></span></span></code></pre>
+<!-- prettier-ignore-end -->
+<blockquote>
+<p><a href="https://swr.vercel.app/blog/swr-v2">Announcing SWR 2.0 – SWR</a></p>
+</blockquote>
+<p>こうした代表的なライブラリのサンプルコードに<code>type</code>属性が省略されていることは、問題ないものと錯覚させてしまうかもしれないので個人的には好ましくありません。</p>
+<p>もちろん明示的に<code>type</code>属性を示しているものもあります。Preactのチュートリアルでは<code>type="submit"</code>を明示しています。この例はとても良いので見習ってほしいです。</p>
+<!-- prettier-ignore-start -->
+<pre class="language-jsx"><code is:raw="" class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> h<span class="token punctuation">,</span> render<span class="token punctuation">,</span> Component <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'preact'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span><span class="token punctuation">></span></span><span class="token plain-text">Hello, world!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>form</span><span class="token punctuation">></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">Update</span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>form</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'app'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<!-- prettier-ignore-end -->
+<blockquote>
+<p><a href="https://preactjs.com/guide/v10/tutorial/">Tutorial | Preact: Fast 3kb React alternative with the same ES6 API. Components &#x26; Virtual DOM.</a></p>
+</blockquote>
+<p>それはそれとして<code>&#x3C;input type="text"></code>にラベルが紐づけていないのが気になります。</p>
+<h2 id="linterでtype属性をつけるよう矯正する">Linterで<code>type</code>属性をつけるよう矯正する</h2>
+<p>このような属性に関する指摘をいちいちレビュー等で毎度指摘するのは大変なので、できるかぎり機械的に指摘するようにしてもらいたいです。</p>
+<p>そこで業務でも私用でも愛用しているマークアップのリンターである<a href="https://markuplint.dev/ja/">Markuplint</a>では以下のように<code>type</code>属性をつけるように強制できるルールを作れます。</p>
+<pre class="language-json"><code is:raw="" class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"required-attr"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"nodeRules"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"selector"</span><span class="token operator">:</span> <span class="token string">"button"</span><span class="token punctuation">,</span>
+      <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"required-attr"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"value"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token punctuation">{</span>
+            <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"type"</span><span class="token punctuation">,</span>
+            <span class="token property">"value"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"button"</span><span class="token punctuation">,</span> <span class="token string">"reset"</span><span class="token punctuation">,</span> <span class="token string">"submit"</span><span class="token punctuation">]</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">"reason"</span><span class="token operator">:</span> <span class="token string">"type指定がないとデフォルトでsubmitの挙動になるので、予期せぬ挙動にならないように意図的に提示してください。"</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre>
+<p>AngularのESLintでは<code>&#x3C;button></code>要素に<code>type</code>属性がないと警告されるルールが搭載されています。これはとても良いものです。</p>
+<p><a href="https://github.com/angular-eslint/angular-eslint/blob/0fd361abb7ba80d908e7abdc1e038974366cf72c/packages/eslint-plugin-template/docs/rules/button-has-type.md">angular-eslint/packages/eslint-plugin-template/docs/rules/button-has-type.md at main · angular-eslint/angular-eslint</a></p>
+<h2 id="form要素を使わなくてもデータ送信ができるようになった"><code>&#x3C;form></code>要素を使わなくてもデータ送信ができるようになった</h2>
+<p>しかし<code>&#x3C;button></code>要素の<code>type</code>属性を意識するのは<code>&#x3C;form></code>要素を使う時だけなのかもしれません。事実、現在サーバーにデータを送信するために<code>&#x3C;form></code>要素を使わなくてもJavaScriptを経由して送信することができます。</p>
+<p>JavaScriptでHTTPリクエストを送るオブジェクトであるXMLHTTPRequestを使うことで可能になります。</p>
+<pre class="language-js"><code is:raw="" class="language-js"><span class="token keyword">const</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">'POST'</span><span class="token punctuation">,</span> <span class="token string">'/api/todos'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+xhr<span class="token punctuation">.</span><span class="token function">setRequestHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'application/json'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'New Item'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Fetch APIを使う場合でも同様のことが可能になります。</p>
+<pre class="language-js"><code is:raw="" class="language-js"><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'/api/todos'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'POST'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">headers</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">'Content-Type'</span><span class="token operator">:</span> <span class="token string">'application/json'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">body</span><span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'New Item'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>このように<code>&#x3C;form></code>要素を使わなくてもデータを送信できるようになってきています。JavaScriptとWeb APIの進化により送信するための責務がHTMLから離れてきており、<code>&#x3C;button type="submit"></code>を意識することは減ってきてしまっているのかと私は推測しています。</p>
+<p>しかし最近ではRemixやReact.js（あるいはNext.js）からServer Actionといったものが生まれてきて、JavaScript（この場合はJSX）を書きつつも<code>&#x3C;form></code>要素でデータ送信を扱う事例も増えてきています。</p>
+<!-- prettier-ignore-start -->
+<pre class="language-jsx"><code is:raw="" class="language-jsx"><span class="token string">'use client'</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> useFormState<span class="token punctuation">,</span> useFormStatus <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-dom'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createTodo <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/app/actions'</span>
+
+<span class="token keyword">const</span> initialState <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">SubmitButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> pending <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useFormStatus</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">aria-disabled</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>pending<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      Add
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">AddForm</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>state<span class="token punctuation">,</span> formAction<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useFormState</span><span class="token punctuation">(</span>createTodo<span class="token punctuation">,</span> initialState<span class="token punctuation">)</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>form</span> <span class="token attr-name">action</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>formAction<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>label</span> <span class="token attr-name">htmlFor</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>todo<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">Enter Task</span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>label</span><span class="token punctuation">></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>todo<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>todo<span class="token punctuation">"</span></span> <span class="token attr-name">required</span> <span class="token punctuation">/></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span><span class="token class-name">SubmitButton</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span> <span class="token attr-name">aria-live</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>polite<span class="token punctuation">"</span></span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sr-only<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+        </span><span class="token punctuation">{</span>state<span class="token operator">?.</span>message<span class="token punctuation">}</span><span class="token plain-text">
+      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>form</span><span class="token punctuation">></span></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<!-- prettier-ignore-end -->
+<blockquote>
+<p><a href="https://nextjs.org/docs/app/building-your-application/data-fetching/forms-and-mutations">Data Fetching: Forms and Mutations | Next.js</a></p>
+</blockquote>
+<p>これはハイドレーションが完了するまでにフォーム操作ができるようになるユーザー体験としての利点がありますが、そもそもデータを送信するセマンティクス情報として<code>&#x3C;form></code>要素を意識して書くことができるのであれば、フレームワークに準じて書くべきだと思っています。</p>
+<h2 id="button自体が汎用的なものになってきている"><code>&#x3C;button></code>自体が汎用的なものになってきている</h2>
+<p>ところでいまWebブラウザ上で「ボタン」を表現するとしたら、<code>&#x3C;button></code>要素を使って表現する人が多いと思っています。私もそうです。</p>
+<p>HTML仕様上では<code>&#x3C;input></code>要素の<code>type</code>属性で<code>button</code>を指定することでも同等の挙動になるのでこの書き方でも有効です。ちなみに<code>&#x3C;button></code>の方が後で生まれたもの（<a href="https://www.w3.org/TR/html40/interact/forms.html#h-17.5">HTML4.0</a>より）になります。</p>
+<!-- prettier-ignore-start -->
+<pre class="language-html"><code is:raw="" class="language-html"><span class="token comment">&#x3C;!-- 以下２つは挙動としては妥当なマークアップ --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>お気に入りに追加<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>お気に入りに追加<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<!-- prettier-ignore-end -->
+<p><code>&#x3C;input></code>要素の<code>type</code>属性で<code>button</code>を指定すると<code>value</code>属性の値がボタンのラベルになります。<code>&#x3C;button></code>要素では中身のテキストがボタンのラベルとなります。</p>
+<p>ですがボタンの中で画像やアイコンを差し込むことを想定した場合は<code>&#x3C;button></code>要素のほうが圧倒的に扱いやすいでしょう。</p>
+<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>svg</span>
+    <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>20<span class="token punctuation">"</span></span>
+    <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>20<span class="token punctuation">"</span></span>
+    <span class="token attr-name">viewBox</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0 0 100 100<span class="token punctuation">"</span></span>
+    <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>img<span class="token punctuation">"</span></span>
+    <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+  <span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>polygon</span>
+      <span class="token attr-name">points</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>50,10 60,40 90,40 65,60 75,90 50,70 25,90 35,60 10,40 40,40<span class="token punctuation">"</span></span>
+    <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>polygon</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>svg</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>span</span><span class="token punctuation">></span></span>お気に入りに追加<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>span</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<p>最近はインタラクティブな要素としてJavaScriptを書かなくても表現できるものが増えつつあります（<strong>現時点でクロスブラウザ対応しているかは置いておきます</strong>）。</p>
+<p>Popover APIを活用するとJavaScriptを使用せずポップオーバーを表示させることは可能になってきています。</p>
+<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">popovertarget</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>popover<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>ポップアップを表示する<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">popover</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>popover<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>ポップアップ内のコンテンツ<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<blockquote>
+<p><a href="https://developer.mozilla.org/ja/docs/Web/API/Popover_API">ポップオーバー API - Web API | MDN</a></p>
+</blockquote>
+<p>更に発展させたInvokersを使うとポップオーバーのほかダイアログや開くことも可能になるように検討されています。</p>
+<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">invoketarget</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>my-dialog<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>ダイアログを開く<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>dialog</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>my-dialog<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>ダイアログ内のコンテンツ<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>dialog</span><span class="token punctuation">></span></span></code></pre>
+<blockquote>
+<p><a href="https://open-ui.org/components/invokers.explainer/">Invokers (Explainer) | Open UI</a></p>
+</blockquote>
+<p>ブラウザで扱うものが文書としてのWebページ以外にもアプリケーションとしても活用されるようになってきた現代においては、様々なインタラクションの発火点として<code>&#x3C;button></code>要素はますます重宝されることになると思っています。だからこそインタラクションのものとして<code>type="button"</code>を明示的に書くことは重要だと考えています。</p>
+<h2 id="type属性の値は今後増えていくかもしれない"><code>type</code>属性の値は今後増えていくかもしれない</h2>
+<p><code>type</code>属性で使える値は<code>submit</code>と<code>button</code>と<code>reset</code>のみが今のHTMLの仕様で定義されていますが、今後それらが増えていく可能性があることも頭の片隅に置いておくべきだと思っています。</p>
+<h3 id="web-share-api">Web Share API</h3>
+<p>Web Share APIとはOSの共有機能をWebブラウザから利用できるようにするAPIです。現在この機能を<code>&#x3C;button></code>上で実現するために<code>type="share"</code>という値が提案されています。</p>
+<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>share<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>共有する<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<blockquote>
+<p><a href="https://github.com/WICG/proposals/issues/11">Share Button Type · Issue #11 · WICG/proposals</a></p>
+</blockquote>
+<h3 id="selectlist-element">Selectlist Element</h3>
+<p>OpenUIはW3Cコミュニティグループの1つで、組み込み用のUIコンポーネントのスタイリングや機能拡張を目的として日々活動しています。その中で<code>&#x3C;selectlist></code>要素というものも提案されています。</p>
+<p>リストボックスを開くために<code>&#x3C;button></code>要素を使うことができて、その際に<code>type="selectlist"</code>という値が使えることが提案されています。</p>
+<!-- prettier-ignore-start -->
+<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>selectlist</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>selectlist<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    selected option: <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>selectedoption</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>selectedoption</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>option</span><span class="token punctuation">></span></span>one<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>option</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>option</span><span class="token punctuation">></span></span>two<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>option</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>selectlist</span><span class="token punctuation">></span></span></code></pre>
+<!-- prettier-ignore-end -->
+<figure>
+  <img src="https://open-ui.org/images/selectlist-usecase-button.png" alt="The rendering of a selectlist with an author-provided button" width="320">
+  <figcaption><a href="https://open-ui.org/components/selectlist/#replacing-the-button">Replacing the button より引用</a></figcaption>
+</figure>
+<blockquote>
+<p><a href="https://open-ui.org/components/selectlist/">Selectlist Element (Explainer) | Open UI</a></p>
+</blockquote>
+<hr>
+<p>これらはいずれもWeb標準の挙動としてはまだ確立されていませんが、<code>type</code>属性の値が3つしかないと思いこんでいると、今後増えていくことを見落としてしまうかもしれません。</p>
+<h2 id="おわりに">おわりに</h2>
+<p>以上<code>&#x3C;button></code>要素の<code>type</code>属性について書きました。この記事を読んでそもそも<code>&#x3C;button></code>要素のデフォルト挙動が<code>submit</code>になっていること自体が煩わしいと感じた人もいるかもしれません。</p>
+<p>しかしWebは後方互換性を重視しているものです。これまで明示的に書いていなかったものがデフォルトの挙動を変えてしまえば何らかのサイトやアプリケーションで動かなくなってしまう可能性が大いにあります。一斉に皆で変えることができればいいでしょうがそんなことは不可能でしょう。Webが一般的になった今、デフォルトの挙動を変えることはとても難しいことです。</p>
+<p><code>&#x3C;button></code>要素の<code>type</code>属性の値自体は、マシンリーダブルの観点や支援技術（スクリーンリーダー）の読み上げにおいて影響は及ぼしません（私が知る限り）。しかし私はHTMLの意味論的ルールの観点においても、<code>&#x3C;button></code>要素の<code>type</code>属性を実装する人が何の意図をもってその<code>type</code>属性で実装したのか明示的に書くことは、ほかの実装者がそれを知れるためにも重要だと思っています。</p>
+<p>Webサイト・アプリケーションを作っていく上で今後も<code>&#x3C;button></code>要素は重要な役割を担っていくと思っています。そのためにも<code>type</code>属性を明示的に書いていくことは重要です。これまで意識して書いてなかった人もこれを機に意識して書いていけるようになってくれると嬉しいです。</p>
+<h2 id="参考情報">参考情報</h2>
+<ul>
+<li><a href="https://html.spec.whatwg.org/multipage/form-elements.html#the-button-element">4.10.6 The button element - HTML Standard</a></li>
+<li><a href="https://developer.mozilla.org/ja/docs/Web/HTML/Element/button">&#x3C;button>: ボタン要素 - HTML: ハイパーテキストマークアップ言語 | MDN</a></li>
+<li><a href="https://blog.w0s.jp/263"><code>button</code>要素で画像ボタンを作る</a></li>
+<li><a href="https://zenn.dev/fujiyama/articles/496e5e81ba7df9">ボタンには常にtype=“button”をつけよう</a></li>
+<li><a href="https://github.com/adactio/share-button-type">adactio/share-button-type</a></li>
+</ul> </article> <details data-astro-cid-yvbahnfj> <summary data-astro-cid-yvbahnfj>この記事に関する修正依頼</summary> <ul data-astro-cid-yvbahnfj> <li data-astro-cid-yvbahnfj> <a href="https://github.com/yamanoku/2023/issues/new?title=「button要素のtype属性について気にしたくないけどそうもいかない話」の修正依頼&#38;labels=feedback&#38;body=URL：https://2023.yamanoku.net/2023-12-04%0A修正依頼内容：%0A" target="_blank" data-astro-cid-yvbahnfj>
+GitHub Issueを作成する
+</a> </li> <li data-astro-cid-yvbahnfj> <a href="https://twitter.com/intent/tweet?url=https://2023.yamanoku.net/2023-12-04&#38;text=@yamanoku" target="_blank" data-astro-cid-yvbahnfj>
+著者にポストする
+</a> </li> </ul> </details> <a href="/" data-astro-cid-yvbahnfj>トップへ戻る</a> </main> <footer data-astro-cid-sz7xmlte> <p data-astro-cid-sz7xmlte>&copy; Copyright 2023, Okuto Oyama</p> <p data-astro-cid-sz7xmlte>
+Source :
+<a href="https://github.com/yamanoku/2023/" target="_blank" rel="noopener" data-astro-cid-sz7xmlte>yamanoku/2023</a> </p> </footer>  </body></html>

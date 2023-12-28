@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="ja" data-astro-cid-yvbahnfj> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/x-icon" href="/favicon.ico"><title>フロントエンド特化の生存戦略としてのイネイブリングチーム考 | yamanoku Advent Calendar 2023</title><meta name="title" content="フロントエンド特化の生存戦略としてのイネイブリングチーム考 | yamanoku Advent Calendar 2023"><meta name="description" content="フロントエンドのドメイン知識をもつ人がイネイブリングチームで活躍できるかを考えてみる"><meta property="og:type" content="website"><meta property="og:url" content="https://2023.yamanoku.net/2023-12-14/"><meta property="og:title" content="フロントエンド特化の生存戦略としてのイネイブリングチーム考 | yamanoku Advent Calendar 2023"><meta property="og:description" content="フロントエンドのドメイン知識をもつ人がイネイブリングチームで活躍できるかを考えてみる"><meta property="og:image" content="https://2023.yamanoku.net/ogp-image.png"><meta property="twitter:card" content="summary"><meta property="twitter:url" content="https://2023.yamanoku.net/2023-12-14/"><meta property="twitter:title" content="フロントエンド特化の生存戦略としてのイネイブリングチーム考 | yamanoku Advent Calendar 2023"><meta property="twitter:description" content="フロントエンドのドメイン知識をもつ人がイネイブリングチームで活躍できるかを考えてみる"><meta property="twitter:image" content="https://2023.yamanoku.net/ogp-image.png"><link rel="stylesheet" href="/_astro/_slug_.xEav6_Ut.css" />
+<style>.footnotes{position:relative;padding-top:var(--y-rhythm-3)}.footnotes:before{content:"";width:100%;height:1px;background-color:var(--y-arcticle-border-color);position:absolute;top:0;left:0}.footnotes h2{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}.footnotes li p{margin:0}.notes[data-astro-cid-yvbahnfj]{margin:var(--y-rhythm-3) 0}.article-header[data-astro-cid-yvbahnfj]{display:flex;flex-wrap:wrap;justify-content:space-between;margin:calc(var(--y-rhythm-2) * -1);padding:0}.article-header[data-astro-cid-yvbahnfj]>[data-astro-cid-yvbahnfj]{margin:var(--y-rhythm-2)}.bread-crumbs[data-astro-cid-yvbahnfj]{margin:var(--y-rhythm-3) 0}
+</style></head> <body data-astro-cid-yvbahnfj> <header data-astro-cid-3ef6ksr2> <div class="header-logo-link-block" data-astro-cid-3ef6ksr2> <svg class="header-logo-image" width="48" height="48" viewBox="0 0 246 242" role="img" aria-label="yamanoku" data-astro-cid-3ef6ksr2> <style>
+        .path {
+          fill: rgb(54, 70, 93);
+          fill-rule: evenodd;
+        }
+        @media (prefers-color-scheme: dark) {
+          .path {
+            fill: var(--y-white-base);
+          }
+        }
+      </style> <path class="path" d="M64,67v54l82,82-46,46v60h56L310,155V96H230l-21,20L160,67H64ZM176,203l-45,46h25L293,113H230l-39,39-31-31H94Z" transform="translate(-64 -67)" data-astro-cid-3ef6ksr2></path> </svg> <span data-astro-cid-3ef6ksr2>Advent Calendar 2023</span> </div> </header>  <main data-astro-cid-yvbahnfj> <article data-astro-cid-yvbahnfj> <div data-astro-cid-yvbahnfj> <time datetime="2023-12-14" data-astro-cid-yvbahnfj>2023-12-14</time> </div> <h1 class="title" data-astro-cid-yvbahnfj><span style="word-break: keep-all; overflow-wrap: anywhere;">フロントエンド特化の​生存戦略と​しての​イネイブリングチーム考</span></h1> <p data-astro-cid-yvbahnfj>この記事は<a href="https://adventar.org/calendars/8589" data-astro-cid-yvbahnfj>yamanoku Advent Calendar 2023</a>の14日目の記事になります。</p> <p>今回書かれていることは私の中でもまだ理解が浅い状態で書き記している話のため、書いている内容自体が間違っている可能性がある。その点留意して読んでいただけると幸いである。</p>
+<h2 id="フロントエンドが担うことは多い">フロントエンドが担うことは多い？</h2>
+<p>フロントエンドの進化は速くそれに追従していくのが大変だ、という話をよく耳にする。その事自体が明らかであることの確たる証拠はないのだが、現代のWeb開発においてはフロントエンドの開発環境構築やビルドフローの整備、フレームワークの選定・導入、テスト設計やVRTの整備などの基盤を支えるための知識が必要であったり、HTML/CSS/JavaScriptの知識やWebブラウザの挙動やAPIについての理解について、そしてバックエンドとの接続についても必要だったりと、フロントエンドにまつわる知識は多岐に渡ってくる。</p>
+<p>そうした領域の広さを請け負いつつ、何らかのドメインについての知識や開発、機能のデリバリーのことも考えていくとなると過度に認知負荷が高くなってしまう。その領域や責務をフロントエンド専任のチームをつくり、移譲していく形になっていくのがよくある形なのかと思う。そこで必要となる役割が「フロントエンドエンジニア」になると思われる。</p>
+<h2 id="具体的な役割への分化">具体的な役割への分化</h2>
+<p>フロントエンド専任も1つのチームの形ではあるが、その場合はバックエンドとフロントエンドとで分かれることによりチーム間の情報の透明性が低くなったりコミュニケーションコストが高まっていく可能性がある。また、チーム内も人が増えてくることで力関係ややっていくことも変化していく。そうした中でチーム機能がうまく働いていないとそもそもの機能提供や価値創造が遅れることに繋がりかねない。そうしたことを避けるためにも全体的に自律的なチームを作っていくことが求められ、フロントエンド専任を置き続けることは事業価値の提供においてはボトルネックになるかもしれない。</p>
+<p>そうした単なる「フロントエンドエンジニア」としての役割から派生して今は別の役割も生まれてきている。デザイナーとの架け橋としてのデザインエンジニアのような役割、フロントエンドのツールやビルド環境を整えるOpsエンジニアのような役割、バックエンドの知識も取り入れたフルスタックエンジニアとしての役割などがある。これらが上位互換ということではないが、いずれも自身の役割をより事業に活かせるものとして発展させてきている印象がある。</p>
+<p>こうした様々な道がある中で、私自身はWebやフロントエンドにまつわる領域のドメインに特化していき、それをチームや組織、そして事業全体の中で活かせるように振る舞っていきたいように思ってきた。</p>
+<p>何故そのようなことをしたいかについては、私が特定の領域に尖りすぎているためであるという至極単純な理由だ。もっともらしい理由をつけるとするなら<a href="/2023-12-09">ブラウザの今後を憂いている</a>ので事業者サイドから相互運用性や品質を守っていきたいし、Webでの良い体験を産み出し続けてそれを事業価値にしたいし、我々から仕様提案をしていくことなどもやっていきたい。</p>
+<p>しかし、そうした先鋭的な振る舞いができそうな役割とは具体的にどういうものかを考えてみたが、今ひとつピンと来ず、どういったものなのかは浮かばなかった。</p>
+<p>そんな中で「<a href="https://pub.jmam.co.jp/book/b593881.html">チームトポロジー 価値あるソフトウェアをすばやく届ける適応型組織設計</a>」という本を知り、その中で紹介されたチームの中でそうした役割が活かせるのではないかと最近考えている。</p>
+<h2 id="イネイブリングチームの中での役割">イネイブリングチームの中での役割</h2>
+<p>コンウェイの法則やDevOpsの観点から効率的なデリバリーができるようチームに明確な責任と境界をもたせるように考えるチームトポロジーという方法がある。その中で「<strong>イネイブリングチーム</strong>」というチームの形がある。</p>
+<p>イネイブリングチームは、他のチームが障害を克服し、新しいスキルを習得し、プロセスを改善し自律的で進められるような支援を目的としている。実際のチームはどういったことをするのか、あるいはどう振る舞うのかは以下になる（一例）。</p>
+<ul>
+<li>継続的な価値デリバリーをしていくストリームアラインドチームを支援をしていくことが目的</li>
+<li>イネイブリングチームはストリームアラインドチームとで相互依存してしまってはいけない</li>
+<li>ファシリテーターとして振る舞える</li>
+<li>技術的なライフサイクルマネジメントをする</li>
+<li>情報共有を促すキュレーターとしての役割を担う</li>
+<li>知識の「象牙の塔<sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup>」にならないようにする</li>
+</ul>
+<p>このチームにおける役割を考えてみると、先言った私が考える役割がちょうど良い形でハマってくれそうな気がしている。実際に組織内で決まったイネイブリングチームとしての存在なのかは定かではないが、<a href="https://cybozu.co.jp/recruit/entry/career/front-end-expert.html">サイボウズ株式会社のフロントエンドエキスパート</a>のような存在なのかと思っている。</p>
+<p>もちろんフロントエンドのエキスパートだけの構成でなくても良い。Classi株式会社も現在はチームトポロジーを参考に組織編成をしており<sup><a href="#user-content-fn-2" id="user-content-fnref-2" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup>、その中でフロントエンドエキスパートの役割をもつ人が各チームへサポートしているといった話を聞いたことがある<sup><a href="#user-content-fn-3" id="user-content-fnref-3" data-footnote-ref="" aria-describedby="footnote-label">3</a></sup>。</p>
+<h2 id="フロントエンドへの認知負荷を減らす">フロントエンドへの認知負荷を減らす</h2>
+<p>チームトポロジーを読んでいて私の中でピンと来たキーワードは「認知負荷」であった。私自身もWeb制作出身でフロントエンドだけしかできないところから現在の事業会社に転職し、様々な知識やコンテキストが必要となってきて非常に疲弊した覚えがある<sup><a href="#user-content-fn-4" id="user-content-fnref-4" data-footnote-ref="" aria-describedby="footnote-label">4</a></sup>。そうした経験が強く残り、全体の認知負荷を減らすことについて興味をもっていたりする。</p>
+<p>今はコロナ禍を経てフルリモート、あるいはハイブリットな出社をするなど働き方の形も多様になってきた。かつては出社して隣で作業をして情報共有や知識継承ができていた場も、やり方を考えないと途絶えてしまうことは往々にして起きてしまう。それをチームの形から解決していくことができれば、持続的に全体の生産性を上げることがつながるのではないかと思っている。</p>
+<p>こうしたフロントエンドへの知識継承の入口から、フロントエンド開発ないしWebそのものについてのドメイン知識を保有したスペシャリストの道も広がっていければいいなとは妄想しつつ、まず今は私の役割が組織内でフィットするやり方についてを模索していければいいなと思っている次第である。</p>
+<h2 id="参考情報">参考情報</h2>
+<ul>
+<li><a href="https://zenn.dev/hihats/articles/mp_on_team_topologies">Team Topologies(by Manuel Pais)のキーポイント</a></li>
+<li><a href="https://www.ryuzee.com/contents/blog/14566">【資料公開】30分で分かった気になるチームトポロジー | Ryuzee.com</a></li>
+</ul>
+<section data-footnotes="" class="footnotes"><h2 class="sr-only" id="footnote-label">脚注</h2>
+<ol>
+<li id="user-content-fn-1">
+<p><a href="https://www.weblio.jp/content/%E8%B1%A1%E7%89%99%E3%81%AE%E5%A1%94">「象牙の塔(ぞうげのとう)」の意味や使い方 わかりやすく解説 Weblio辞書</a> <a href="#user-content-fnref-1" data-footnote-backref="" aria-label="コンテンツに戻る" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-2">
+<p><a href="https://tech.classi.jp/entry/2022/07/19/170000">チームトポロジーを参考に新組織の編成を考えた話 - Classi開発者ブログ</a> <a href="#user-content-fnref-2" data-footnote-backref="" aria-label="コンテンツに戻る" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-3">
+<p><a href="https://podcasters.spotify.com/pod/show/ogenkidesuka-fm/episodes/vol-14---lacolaco-e1knvfs">vol.14 - 【ゲスト：lacolaco】ソフトウェアエンジニアよ、哲学を学ぼう by お元気ですか.fm</a> <a href="#user-content-fnref-3" data-footnote-backref="" aria-label="コンテンツに戻る" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-4">
+<p>なぜそうなったかの要因は色々とあるのだがここでは割愛する <a href="#user-content-fnref-4" data-footnote-backref="" aria-label="コンテンツに戻る" class="data-footnote-backref">↩</a></p>
+</li>
+</ol>
+</section> </article> <details data-astro-cid-yvbahnfj> <summary data-astro-cid-yvbahnfj>この記事に関する修正依頼</summary> <ul data-astro-cid-yvbahnfj> <li data-astro-cid-yvbahnfj> <a href="https://github.com/yamanoku/2023/issues/new?title=「フロントエンド特化の生存戦略としてのイネイブリングチーム考」の修正依頼&#38;labels=feedback&#38;body=URL：https://2023.yamanoku.net/2023-12-14%0A修正依頼内容：%0A" target="_blank" data-astro-cid-yvbahnfj>
+GitHub Issueを作成する
+</a> </li> <li data-astro-cid-yvbahnfj> <a href="https://twitter.com/intent/tweet?url=https://2023.yamanoku.net/2023-12-14&#38;text=@yamanoku" target="_blank" data-astro-cid-yvbahnfj>
+著者にポストする
+</a> </li> </ul> </details> <a href="/" data-astro-cid-yvbahnfj>トップへ戻る</a> </main> <footer data-astro-cid-sz7xmlte> <p data-astro-cid-sz7xmlte>&copy; Copyright 2023, Okuto Oyama</p> <p data-astro-cid-sz7xmlte>
+Source :
+<a href="https://github.com/yamanoku/2023/" target="_blank" rel="noopener" data-astro-cid-sz7xmlte>yamanoku/2023</a> </p> </footer>  </body></html>
