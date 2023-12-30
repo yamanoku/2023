@@ -9,7 +9,7 @@
     "prettier": "prettier --write .",
     "textlint": "textlint src/content/articles/**.md",
     "textlint:fix": "textlint --fix src/content/articles/**.md",
-    "deploy": "gh-pages -d dist -b gh-pages -m 'chore: deploy' -t"
+    "deploy": "gh-pages -d dist -b gh-pages -m 'chore: deploy [skip ci]' -t"
   },
   "dependencies": {
     "@astrojs/mdx": "2.0.3",
