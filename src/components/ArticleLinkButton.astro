@@ -1,0 +1,28 @@
+---
+export interface Props {
+  day: number
+}
+const { day } = Astro.props
+
+const url = `/2023-12-${day.toString().padStart(2, '0')}`
+---
+
+<style>
+  .link {
+    display: block;
+    max-width: fit-content;
+    margin: var(--y-rhythm-3) 0;
+    padding: var(--y-rhythm-1) var(--y-rhythm-2);
+    text-decoration: none;
+    color: var(--y-black-base);
+    background-color: var(--y-white-base);
+    border-radius: 4px;
+    border: 1px solid var(--y-white-medium);
+  }
+  .link:hover {
+    color: var(--y-blue-medium);
+    background-color: rgb(243 244 246);
+  }
+</style>
+
+<a class="link" href={url}>{day}日目の記事</a>
