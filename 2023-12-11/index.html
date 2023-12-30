@@ -36,7 +36,7 @@
 <p>あまりCSSクラス自体に広い責任をもたせず、その場その場で必要なものをプロパティをもつ単体のクラスを定義する、いわゆるYAGNIのような考え方でした。この頃はまだTailwind CSSは存在していませんでしたが、当時はユーティリティだけで表現するようにしたい考えをもっていたので、考え方が近いことに親近感をもっていました。</p>
 <h2 id="スタイル表現横に伸ばすか縦に伸ばすか">スタイル表現、横に伸ばすか縦に伸ばすか</h2>
 <p>Tailwind CSSを使う際に、HTMLへの記述量が増えていくことに違和感をもつことはあると思います。実際のコード例をみるためにとあるサインインフォームを想定してみましょう。</p>
-<p><img width="720" height="568" src="https://i.gyazo.com/85f8040534019a309a8c605dea8e90c9.png" alt="ユーザーネームとパスワードのテキストボックスとSign inと書かれた送信ボタンが並ぶサインインフォーム。フォーム内部は白背景で外枠は角丸になっており薄いシャドウボックスがつけられている。" loading="lazy"></p>
+<p><img width="900" height="711" src="https://i.gyazo.com/85f8040534019a309a8c605dea8e90c9.png" alt="ユーザーネームとパスワードのテキストボックスとSign inと書かれた送信ボタンが並ぶサインインフォーム。フォーム内部は白背景で外枠は角丸になっており薄いシャドウボックスがつけられている。" loading="lazy"></p>
 <p>このサインインフォームをTailwind CSSでスタイリングすると以下のようなコードになります。</p>
 <!-- prettier-ignore-start -->
 <pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex min-h-screen flex-col items-center justify-center bg-gray-100<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
