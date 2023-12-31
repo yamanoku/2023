@@ -23,6 +23,18 @@ const url = `/2023-12-${day.toString().padStart(2, '0')}`
     color: var(--y-blue-medium);
     background-color: rgb(243 244 246);
   }
+  @media (prefers-color-scheme: dark) {
+    .link {
+      color: var(--y-white-base);
+      background-color: var(--y-black-base);
+      border: 1px solid var(--y-white-medium);
+    }
+    .link:hover {
+      color: var(--y-white-base);
+      background-color: rgb(38 50 62 / 100%);
+      border: 1px solid var(--y-white-base);
+    }
+  }
 </style>
 
 <a class="link" href={url}>{day}日目の記事</a>
