@@ -8,20 +8,39 @@ const url = `/2023-12-${day.toString().padStart(2, '0')}`
 ---
 
 <style>
+  :root {
+    --button-text-color: var(--y-black-base);
+    --button-border-color: var(--y-white-medium);
+    --button-background-color: var(--y-white-base);
+    --button-hover-text-color: var(--y-blue-medium);
+    --button-hover-border-color: var(--y-white-medium);
+    --button-hover-background-color: rgb(243 244 246 / 100%);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --button-text-color: var(--y-white-base);
+      --button-border-color: var(--y-white-medium);
+      --button-background-color: var(--y-black-base);
+      --button-hover-text-color: var(--y-purple-medium);
+      --button-hover-border-color: var(--y-white-base);
+      --button-hover-background-color: rgb(38 50 62 / 100%);
+    }
+  }
   .link {
     display: block;
     max-width: fit-content;
     margin: var(--y-rhythm-3) 0;
     padding: var(--y-rhythm-1) var(--y-rhythm-2);
     text-decoration: none;
-    color: var(--y-black-base);
-    background-color: var(--y-white-base);
     border-radius: 4px;
-    border: 1px solid var(--y-white-medium);
+    color: var(--button-text-color);
+    background-color: var(--button-background-color);
+    border: 1px solid var(--button-border-color);
   }
   .link:hover {
-    color: var(--y-blue-medium);
-    background-color: rgb(243 244 246);
+    color: var(--button-hover-text-color);
+    background-color: var(--button-hover-background-color);
+    border: 1px solid var(--button-hover-border-color);
   }
 </style>
 
