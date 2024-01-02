@@ -3,7 +3,7 @@ import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 import resolveLayoutShiftPlugin from 'rehype-plugin-auto-resolve-layout-shift';
 import lazyloadPlugin from 'rehype-plugin-image-native-lazy-loading';
-import tailwind from "@astrojs/tailwind";
+import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,14 +11,20 @@ export default defineConfig({
   markdown: {
     syntaxHighlight: 'prism',
     gfm: true,
-    rehypePlugins: [[resolveLayoutShiftPlugin, {
-      type: 'maxWidth',
-      maxWidth: 900
-    }], lazyloadPlugin],
+    rehypePlugins: [
+      [
+        resolveLayoutShiftPlugin,
+        {
+          type: 'maxWidth',
+          maxWidth: 900,
+        },
+      ],
+      lazyloadPlugin,
+    ],
     remarkRehype: {
       footnoteLabel: '脚注',
-      footnoteBackLabel: 'コンテンツに戻る'
-    }
+      footnoteBackLabel: 'コンテンツに戻る',
+    },
   },
-  integrations: [sitemap(), mdx(), tailwind()]
+  integrations: [sitemap(), mdx(), tailwind()],
 });
