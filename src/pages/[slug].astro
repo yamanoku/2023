@@ -34,49 +34,15 @@ const twitterLink = `https://twitter.com/intent/tweet?url=https://2023.yamanoku.
 <html lang="ja">
   <head>
     <BaseHead title={`${post.data.title} | yamanoku Advent Calendar 2023`} description={post.data.description} />
-    <style>
-      .bread-crumbs {
-        margin: var(--y-rhythm-3) 0;
-      }
-    </style>
-    <style>
-      .notes {
-        margin: var(--y-rhythm-3) 0;
-      }
-      .article-header {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        margin: calc(var(--y-rhythm-2) * -1);
-        padding: 0;
-      }
-      .article-header > * {
-        margin: var(--y-rhythm-2);
-      }
-    </style>
     <style is:global>
-      .footnotes {
-        position: relative;
-        padding-top: var(--y-rhythm-3);
-      }
-      .footnotes::before {
-        content: '';
-        width: 100%;
-        height: 1px;
-        background-color: var(--y-arcticle-border-color);
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-      .footnotes h2 {
-        position: absolute;
-        left: -10000px;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-      }
-      .footnotes li p {
-        margin: 0;
+      @tailwind components;
+      @layer components {
+        .footnotes {
+          @apply relative pt-y-rhythm-3 before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-[1px] before:bg-y-arcticle-border-color;
+        }
+        .footnotes li p {
+          @apply m-0;
+        }
       }
     </style>
   </head>
