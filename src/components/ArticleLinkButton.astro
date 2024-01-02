@@ -1,47 +1,15 @@
 ---
 export interface Props {
-  day: number
+  day: number;
 }
-const { day } = Astro.props
+const { day } = Astro.props;
 
-const url = `/2023-12-${day.toString().padStart(2, '0')}`
+const url = `/2023-12-${day.toString().padStart(2, '0')}`;
 ---
 
-<style>
-  :root {
-    --button-text-color: var(--y-black-base);
-    --button-border-color: var(--y-white-medium);
-    --button-background-color: var(--y-white-base);
-    --button-hover-text-color: var(--y-blue-medium);
-    --button-hover-border-color: var(--y-white-medium);
-    --button-hover-background-color: rgb(243 244 246 / 100%);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --button-text-color: var(--y-white-base);
-      --button-border-color: var(--y-white-medium);
-      --button-background-color: var(--y-black-base);
-      --button-hover-text-color: var(--y-purple-medium);
-      --button-hover-border-color: var(--y-white-base);
-      --button-hover-background-color: rgb(38 50 62 / 100%);
-    }
-  }
-  .link {
-    display: block;
-    max-width: fit-content;
-    margin: var(--y-rhythm-3) 0;
-    padding: var(--y-rhythm-1) var(--y-rhythm-2);
-    text-decoration: none;
-    border-radius: 4px;
-    color: var(--button-text-color);
-    background-color: var(--button-background-color);
-    border: 1px solid var(--button-border-color);
-  }
-  .link:hover {
-    color: var(--button-hover-text-color);
-    background-color: var(--button-hover-background-color);
-    border: 1px solid var(--button-hover-border-color);
-  }
-</style>
-
-<a class="link" href={url}>{day}日目の記事</a>
+<a
+  class="block w-fit my-y-rhythm-3 mx-0 py-y-rhythm-1 px-y-rhythm-2 no-underline rounded text-y-black-base bg-y-white-base border border-solid border-y-white-medium hover:text-y-blue-medium hover:bg-[#f3f4f6] hover:border-y-white-medium dark:text-y-white-base dark:border-y-white-medium dark:bg-y-black-base dark:hover:text-y-purple-medium dark:hover:border-y-white-base dark:hover:bg-[#26323e] visited:text-inherit"
+  href={url}
+>
+  {day}日目の記事
+</a>
