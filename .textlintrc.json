@@ -2,10 +2,7 @@
   "plugins": {},
   "filters": {
     "allowlist": {
-      "allow": [
-        "お元気ですか.fm",
-        "Rome Tools, Inc."
-      ]
+      "allow": ["お元気ですか.fm", "Rome Tools, Inc."]
     }
   },
   "rules": {

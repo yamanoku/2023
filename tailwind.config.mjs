@@ -18,7 +18,7 @@ export default {
         'y-blue-medium': 'var(--y-blue-medium)',
         'y-purple-medium': 'var(--y-purple-medium)',
         'y-arcticle-border-color': 'var(--y-arcticle-border-color)',
-      }
+      },
     },
   },
   corePlugins: {
