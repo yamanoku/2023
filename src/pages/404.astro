@@ -1,0 +1,26 @@
+---
+import BaseHead from '../components/BaseHead.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import { SITE_DESCRIPTION } from '../config'
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <BaseHead title="ページが見つかりませんでした" description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main id="main">
+      <h1>ページが見つかりませんでした</h1>
+      <div>
+        <p>
+          申し訳ありません。お探しのページが見つかりませんでした。<br />
+          お手数をおかけしますが、<a href="/">トップ</a>にお戻りください。
+        </p>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
