@@ -13,7 +13,7 @@
     "deploy": "gh-pages -d dist -b gh-pages -m 'chore: deploy [skip ci]' -t"
   },
   "dependencies": {
-    "@astrojs/mdx": "2.0.3",
+    "@astrojs/mdx": "2.0.4",
     "@astrojs/rss": "4.0.1",
     "@astrojs/sitemap": "3.0.4",
     "@astrojs/tailwind": "5.1.0",
