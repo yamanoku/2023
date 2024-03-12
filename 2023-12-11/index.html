@@ -19,10 +19,12 @@
 <span class="token punctuation">}</span>
 <span class="token selector">.pt-100</span> <span class="token punctuation">{</span>
   <span class="token property">padding-top</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <pre class="language-css"><code is:raw="" class="language-css"><span class="token selector">.btn-w200</span> <span class="token punctuation">{</span>
   <span class="token property">max-width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <p>あまりCSSクラス自体に広い責任をもたせず、その場その場で必要なものをプロパティをもつ単体のクラスを定義する、いわゆるYAGNIのような考え方でした。この頃はまだTailwind CSSは存在していませんでしたが、当時はユーティリティだけで表現するようにしたい考えをもっていたので、考え方が近いことに親近感をもっていました。</p>
 <h2 id="スタイル表現横に伸ばすか縦に伸ばすか">スタイル表現、横に伸ばすか縦に伸ばすか</h2>
 <p>Tailwind CSSを使う際に、HTMLへの記述量が増えていくことに違和感をもつことはあると思います。実際のコード例をみるためにとあるサインインフォームを想定してみましょう。</p>
@@ -44,7 +46,8 @@
       <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>rounded-md bg-indigo-500 px-4 py-2 text-white hover:bg-indigo-600 focus:bg-indigo-600 focus:outline-none<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Sign in<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>form</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
 <!-- prettier-ignore-end -->
 <p>たしかにHTMLのclassへの記述量が増えています。この表現をCSSで行う場合は以下のようになります。</p>
 <pre class="language-css"><code is:raw="" class="language-css"><span class="token selector">.sign-in-form</span> <span class="token punctuation">{</span>
@@ -121,7 +124,8 @@
 <span class="token selector">.sign-in-form__submit-button:focus</span> <span class="token punctuation">{</span>
   <span class="token property">outline</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
   <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>79 70 229<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <p>これらを比較した時に、極端で乱暴な言い方をしてしまえば、CSSで表現するものが<strong>横に伸びるか、縦に伸びるか</strong>の違いなだけに見えます。</p>
 <p>私はCSSで記述するよりも、Tailwind CSSのような表現を使うことで<strong>そのHTMLにどれだけ表現が集中しているかの責務</strong>がよりわかりやすくなるのではないかなとも思っています。</p>
 <h2 id="書き方の特殊さは慣れでどうにかなると思っている">書き方の特殊さは慣れでどうにかなると思っている</h2>
@@ -148,11 +152,14 @@ module<span class="token punctuation">.</span>exports <span class="token operato
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
-<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bg-brand-blue<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>ブランドカラーの青を使った背景<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bg-brand-blue<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>ブランドカラーの青を使った背景<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
 <h2 id="github-copilotとの組み合わせでプロトタイプの爆速実装">GitHub Copilotとの組み合わせでプロトタイプの爆速実装</h2>
 <p>GitHub Copilotを用いて、こうした表現をしたいというプロンプトと共にTailwind CSSを使用することで自動的にコードを生成してくれます。</p>
-<pre class="language-plaintext"><code is:raw="" class="language-plaintext">プロンプト：カードUIをTailwindCSSで作りたい</code></pre>
+<pre class="language-plaintext"><code is:raw="" class="language-plaintext">プロンプト：カードUIをTailwindCSSで作りたい
+</code></pre>
 <!-- prettier-ignore-start -->
 <pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   <span class="token comment">&#x3C;!-- 生成時の画像ソースのURLは404だったためそこだけ差し替えました --></span>
@@ -161,7 +168,8 @@ module<span class="token punctuation">.</span>exports <span class="token operato
     <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h2</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text-xl font-semibold text-gray-800<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>カードのタイトル<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h2</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mt-2 text-gray-600<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>カードの説明文が入ります。<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
 <!-- prettier-ignore-end -->
 <figure>
   <img src="https://i.gyazo.com/61cbaefc9ec36e03270d62253fc95f6c.png" alt="GitHub Copilotにより生成されたカードUI。カード全体は角丸になっていてダミー画像が入った後にタイトルと説明文の順番で並んでおりその部分は白背景になっている。" width="480" loading="lazy">

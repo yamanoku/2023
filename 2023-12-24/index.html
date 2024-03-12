@@ -110,7 +110,8 @@
   <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
   <span class="token comment">/* 子要素の行方向を揃えてくれるようになる */</span>
   <span class="token property">grid-template-rows</span><span class="token punctuation">:</span> subgrid<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <p>具体的な解説は<a href="https://zenn.dev/tonkotsuboy_com/articles/css-subgrid-all-browsers?redirected=1">CSSのSubgridが全ブラウザ対応。Gridの入れ子の基本から応用までを完全理解する</a>を参照ください。</p>
 <h3 id="v0-by-vercel-labs">v0 by Vercel Labs</h3>
 <blockquote>
@@ -228,7 +229,8 @@
       </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span><span class="token class-name">BookmarkIcon</span></span> <span class="token punctuation">/></span></span><span class="token plain-text">
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>button</span><span class="token punctuation">></span></span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <p>その他、Turbopackの進捗についての発表と、App Router・認証・データベースといったものを学習できるサイト（<a href="https://nextjs.org/learn">next.js.org/learn</a>）も公開されました。</p>
 <h3 id="eslintでのフォーマットルールは非推奨に">ESLintでのフォーマットルールは非推奨に</h3>
 <blockquote>
@@ -254,7 +256,8 @@
 <p>Prettierのv3.1.0より<code>--experimental-ternaries</code>オプションを付けることで三項演算子にフォーマットを試せるようになっています。</p>
 <p>以下のような三項演算子があった場合に、</p>
 <!-- prettier-ignore-start -->
-<pre class="language-js"><code is:raw="" class="language-js"><span class="token keyword">const</span> animalName <span class="token operator">=</span> pet<span class="token punctuation">.</span><span class="token function">canBark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> pet<span class="token punctuation">.</span><span class="token function">isScary</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">'wolf'</span> <span class="token operator">:</span> <span class="token string">'dog'</span> <span class="token operator">:</span> pet<span class="token punctuation">.</span><span class="token function">canMeow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">'cat'</span> <span class="token operator">:</span> <span class="token string">'probably a bunny'</span><span class="token punctuation">;</span></code></pre>
+<pre class="language-js"><code is:raw="" class="language-js"><span class="token keyword">const</span> animalName <span class="token operator">=</span> pet<span class="token punctuation">.</span><span class="token function">canBark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> pet<span class="token punctuation">.</span><span class="token function">isScary</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">'wolf'</span> <span class="token operator">:</span> <span class="token string">'dog'</span> <span class="token operator">:</span> pet<span class="token punctuation">.</span><span class="token function">canMeow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">'cat'</span> <span class="token operator">:</span> <span class="token string">'probably a bunny'</span><span class="token punctuation">;</span>
+</code></pre>
 <p>以下のようにフォーマットされるようになります。</p>
 <pre class="language-js"><code is:raw="" class="language-js"><span class="token keyword">const</span> animalName <span class="token operator">=</span>
   pet<span class="token punctuation">.</span><span class="token function">canBark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span>
@@ -262,7 +265,8 @@
       <span class="token string-property property">"wolf"</span>
     <span class="token operator">:</span> <span class="token string">"dog"</span>
   <span class="token operator">:</span> pet<span class="token punctuation">.</span><span class="token function">canMeow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">"cat"</span>
-  <span class="token operator">:</span> <span class="token string">"probably a bunny"</span><span class="token punctuation">;</span></code></pre>
+  <span class="token operator">:</span> <span class="token string">"probably a bunny"</span><span class="token punctuation">;</span>
+</code></pre>
 <!-- prettier-ignore-end -->
 <p>このフォーマットについて<a href="https://forms.gle/vwEuboCobTVhEkt66">Google Form</a>からのフィードバックも受け付けているようです。</p>
 <h3 id="vite-50リリース">Vite 5.0リリース</h3>
@@ -339,11 +343,13 @@
 <p>引数に渡されるクラスセレクターを含んでいるセレクタを指定する擬似クラスの<code>:has()</code>がクロスブラウザ対応しました。以下のような使い方ができます。</p>
 <pre class="language-css"><code is:raw="" class="language-css"><span class="token selector">a:has(img)</span> <span class="token punctuation">{</span>
   <span class="token comment">/* img要素があるa要素にのみ適応するスタイル */</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <pre class="language-css"><code is:raw="" class="language-css"><span class="token comment">/* ダイアログが開いたときに画面を固定するようにする */</span>
 <span class="token selector">html:has(dialog[open])</span> <span class="token punctuation">{</span>
   <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <h3 id="react-aria-components-10リリース">React Aria Components 1.0リリース</h3>
 <blockquote>
 <p><a href="https://react-spectrum.adobe.com/releases/2023-12-20.html">December 20, 2023 Release – React Spectrum Releases</a></p>

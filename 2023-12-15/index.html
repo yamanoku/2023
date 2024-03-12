@@ -11,7 +11,8 @@
 <p>次に具体的な実装方法に触れていきます。実装コードは「<a href="https://gihyo.jp/book/2023/978-4-297-13366-5">Webアプリケーションアクセシビリティ──今日から始める現場からの改善 WEB+DB PRESS</a>」より引用になります。</p>
 <p>まずスクリーンリーダーに読み上げてもらう部分になります。</p>
 <!-- prettier-ignore-start -->
-<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>announcer<span class="token punctuation">"</span></span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert<span class="token punctuation">"</span></span> <span class="token attr-name">aria-live</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>assertive<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>announcer<span class="token punctuation">"</span></span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert<span class="token punctuation">"</span></span> <span class="token attr-name">aria-live</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>assertive<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+</code></pre>
 <!-- prettier-ignore-end -->
 <p><code>role="alert"</code>はユーザーに即座に重要かもしれないメッセージを通知させるためのWAI-ARIAのロールになります。</p>
 <p><code>aria-live="assertive"</code>は要素の内容が変更された瞬間に読み上げるする指定です。この値には他にも読み上げない<code>off</code>という値と、すべての読み上げが終わった後に通知する<code>polite</code>があります。</p>
@@ -24,7 +25,8 @@
   <span class="token keyword">if</span> <span class="token punctuation">(</span>announcer <span class="token keyword">instanceof</span> <span class="token class-name">HTMLElement</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     announcer<span class="token punctuation">.</span>textContent <span class="token operator">=</span> title<span class="token punctuation">;</span>  <span class="token comment">// title要素のテキストを代入する</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <!-- prettier-ignore-end -->
 <p>挙動については <code>onNavigationEnd</code>という関数を用意して、画面遷移が完了した際にこちらを呼び出すようにします。この関数では、<code>title</code>要素のテキストを取得してきて、要素のIDが<code>announcer</code>の中に代入しています。</p>
 <p>これがRoute Announcerとして最低限必要な実装になります。実装を見て分かる通り<code>title</code>要素を取得してくるため、ページごとで適切な内容を設定しておくことが重要です。</p>
@@ -33,7 +35,8 @@
 <p>一番分かりやすい対応としては、画面遷移後にRoute Announcerにフォーカスを当てるというものがあります。</p>
 <!-- prettier-ignore-start -->
 <pre class="language-diff"><code is:raw="" class="language-diff"><span class="token deleted-arrow deleted"><span class="token prefix deleted">&#x3C;</span><span class="token line">body>
-</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> &#x3C;p id="announcer" role="alert" aria-live="assertive">&#x3C;/p></span></span></code></pre>
+</span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> &#x3C;p id="announcer" role="alert" aria-live="assertive">&#x3C;/p>
+</span></span></code></pre>
 <!-- prettier-ignore-end -->
 <p>まずはRoute Announcer要素を<code>&#x3C;body></code>内での一番上に設置します。</p>
 <!-- prettier-ignore-start -->
@@ -42,13 +45,15 @@
 </span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> tabindex="-1"
 </span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> role="alert"
 </span><span class="token prefix unchanged"> </span><span class="token line"> aria-live="assertive">
-</span></span><span class="token deleted-arrow deleted"><span class="token prefix deleted">&#x3C;</span><span class="token line">/p></span></span></code></pre>
+</span></span><span class="token deleted-arrow deleted"><span class="token prefix deleted">&#x3C;</span><span class="token line">/p>
+</span></span></code></pre>
 <!-- prettier-ignore-end -->
 <p>読み上げる要素に<code>tabindex="-1"</code>を付与します。この値があることで<kbd>Tab</kbd>キーで順番に要素へフォーカス移動する際に、その要素だけをスキップできるようになります。</p>
 <pre class="language-diff"><code is:raw="" class="language-diff"><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> if (announcer instanceof HTMLElement) {
 </span><span class="token prefix unchanged"> </span><span class="token line">   announcer.textContent = title;  // title要素のテキストを代入する
 </span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">   announcer.focus();  // 読み上げる要素にフォーカスを当てる
-</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> }</span></span></code></pre>
+</span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> }
+</span></span></code></pre>
 <p>テキストを代入後に<code>focus()</code>を使ってフォーカスを当てることができます。これによりSPAでの画面遷移後にはページ上部へとフォーカスが移動して、通常の画面遷移と同様にフォーカス順序が上から始められるようになります。</p>
 <p>しかし、フォーカスの挙動としてはこの形で問題ないのですが、Windowsで使用できるスクリーンリーダー「<a href="https://www.nvda.jp/">NVDA</a>」での読み上げでは「<em>（ページタイトル）</em>、警告」というように読み上げられてしまいます。なぜそのように読みあげられてしまうかというと、スクリーンリーダーでは対応するHTMLの名前と役割を取得してくるため、<code>role="alert"</code>が付与されていることで「警告」という読み上げになります。</p>
 <p>Route Announcer自体はSPAにおけるアクセシビリティ向上させる実装になりますが、あくまでもテクニックとしてのもので、HTMLの中における適切なセマンティクスな役割といったものは存在しません。なので<code>role</code>によっては違和感のある読み上げになってしまうこともあります。</p>
@@ -69,7 +74,8 @@
     focusHeading<span class="token punctuation">.</span>tabIndex <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>  <span class="token comment">// 見出しにtabindexを付与する</span>
     focusHeading<span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 読み上げる要素にフォーカスを当てる</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <!-- prettier-ignore-end -->
 <h2 id="navigation-apiへの期待">Navigation APIへの期待</h2>
 <p>以上より私が現時点でもっている最適解は<strong>ページの大見出し（あるいはページ内に準ずる見出し）にフォーカスさせる</strong>だと思っているのですが、ページによってはレイアウトが異なったり、大見出しの位置が必ず保証されているわけでもありません。現状の対応ではレイアウトを固定するような制約をもたせない限りは完全には解決できないと思っています。</p>

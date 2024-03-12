@@ -25,7 +25,8 @@
 <p>習慣というものは、ちゃんと理解できていなかったが、身に付けられるとなかなかに心強いものである。逆に更新できなかった日があると遡って埋めようとするくらいには毎日書いて更新しないといけない気持ちに変わってくるのだ。「無理なくやれることを続けていけること」の大切さを実感している。</p>
 <p>日報を更新するでもエディタとしての描き心地は大切だ。Scrapboxのエディタとして便利な点としては、箇条書きで書く際にスペースを入れると自動でインデントする形になるので、サクサクと書き進めることができる。URLリンクを<kbd>⌘</kbd>+<kbd>Shift</kbd>+<kbd>V</kbd>で貼り付けると、リンク先のタイトルが自動で入ってくれて入力する手間が省けるのでかなり便利である。画像もそのままベタ貼りすると<a href="https://gyazo.com/ja">Gyazo</a>に転送されてすぐに使えるようになるのでとても楽である。さらにURLで発行されるので、そのまま他の場所に貼り付けることもできる。</p>
 <p>日報のページ名は日付で統一するようにしている。これは運用していて知ったことなのだが、日付と時刻の入力はMacであれば<kbd>Control</kbd>+<kbd>T</kbd>、WindowsやLinuxであれば<kbd>Alt</kbd>+<kbd>T</kbd>で入力するのだが、デフォルトのフォーマットは<code>2022/2/28</code>という形になり、URLで見ると<code>2022%2F2%2F28</code>に差し替わる。このままだと見づらいのでScrapboxのUserScriptで付のフォーマットをハイフン区切りに変更した。</p>
-<pre class="language-ts"><code is:raw="" class="language-ts">scrapbox<span class="token punctuation">.</span>TimeStamp<span class="token punctuation">.</span><span class="token function">addFormat</span><span class="token punctuation">(</span><span class="token string">'YYYY-MM-DD'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<pre class="language-ts"><code is:raw="" class="language-ts">scrapbox<span class="token punctuation">.</span>TimeStamp<span class="token punctuation">.</span><span class="token function">addFormat</span><span class="token punctuation">(</span><span class="token string">'YYYY-MM-DD'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 <blockquote>
 <p><a href="https://scrapbox.io/help-jp/%E6%97%A5%E4%BB%98%E3%81%A8%E6%99%82%E5%88%BB%E3%82%92%E5%85%A5%E5%8A%9B%E3%81%99%E3%82%8B">日付と時刻を入力する - Scrapbox ヘルプ</a></p>
 </blockquote>
