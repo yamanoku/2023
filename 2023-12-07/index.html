@@ -4,20 +4,20 @@
 <h2 id="accessibility-warningsというアクセシビリティチェック機能">Accessibility warningsというアクセシビリティチェック機能</h2>
 <p>Svelteはコンパイル時にアクセシビリティに関する誤った記法があった際に警告を出してくれます。この機能こそが私がSvelteをコンパイラとして最も推せる理由です。</p>
 <p>たとえばSvelteのコード内で<code>&#x3C;img></code>要素に<code>alt</code>属性がないものを書いてみましょう。</p>
-<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>img</span>
+<pre class="language-html" data-language="html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>img</span>
   <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://i.gyazo.com/809a6f523937838d9ba5eaf20717feee.png<span class="token punctuation">"</span></span>
   <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>320<span class="token punctuation">"</span></span>
 <span class="token punctuation">/></span></span>
 </code></pre>
 <p>すると<code>alt</code>属性を付けるように警告を出してくれます。これは「a11y-missing-attribute」というルールによるものです。</p>
-<pre class="language-shell"><code is:raw="" class="language-shell">A11y: <span class="token operator">&#x3C;</span>img<span class="token operator">></span> element should have an alt attribute
+<pre class="language-shell" data-language="shell"><code is:raw="" class="language-shell">A11y: <span class="token operator">&#x3C;</span>img<span class="token operator">></span> element should have an alt attribute
 </code></pre>
 <blockquote>
 <p>参考：<a href="https://svelte.dev/repl/7c40bf320f5040ce80c72803da37b072?version=4.2.8">Svelte REPLでのサンプルコード</a></p>
 </blockquote>
 <p>これがESLintのプラグインとしてではなく標準のチェッカーとして設定されていることが非常に心強く感じました。</p>
 <p>もちろん、実装上どうしてもルールを無視せざるを得ない場合もあります。もし警告を出したくない場合は<code>&#x3C;!-- svelte-ignore a11y-&#x3C;code> --></code>というコメントを記述することで無視することができます。</p>
-<pre class="language-html"><code is:raw="" class="language-html"><span class="token comment">&#x3C;!-- svelte-ignore a11y-autofocus --></span>
+<pre class="language-html" data-language="html"><code is:raw="" class="language-html"><span class="token comment">&#x3C;!-- svelte-ignore a11y-autofocus --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">autofocus</span> <span class="token punctuation">/></span></span>
 </code></pre>
 <p>アクセシビリティにまつわるルールは12月7日現在で28個のルールがあり、それらの詳細は<a href="https://svelte.jp/docs/accessibility-warnings">ドキュメントにまとまっています</a>。</p>
@@ -58,7 +58,7 @@
 </blockquote>
 <p>svelte-checkにおける「a11y-label-has-associated-control」というルールは<code>&#x3C;label></code>要素が<code>for</code>属性を持っているかどうかをチェックしてくれます。しかし<code>for=""</code>でもバリデーションチェックは通ってしまいます。なぜなら<code>for</code>属性を持つかどうかだけをチェックしているだけだからです。</p>
 <!-- prettier-ignore-start -->
-<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hoge<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<pre class="language-html" data-language="html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>checkbox<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hoge<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>hoge<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>label</span><span class="token punctuation">></span></span> <span class="token comment">&#x3C;!-- この状態でも問題ない判定 --></span>
 </code></pre>
 <!-- prettier-ignore-end -->

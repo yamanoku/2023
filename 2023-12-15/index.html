@@ -11,7 +11,7 @@
 <p>次に具体的な実装方法に触れていきます。実装コードは「<a href="https://gihyo.jp/book/2023/978-4-297-13366-5">Webアプリケーションアクセシビリティ──今日から始める現場からの改善 WEB+DB PRESS</a>」より引用になります。</p>
 <p>まずスクリーンリーダーに読み上げてもらう部分になります。</p>
 <!-- prettier-ignore-start -->
-<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>announcer<span class="token punctuation">"</span></span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert<span class="token punctuation">"</span></span> <span class="token attr-name">aria-live</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>assertive<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
+<pre class="language-html" data-language="html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>announcer<span class="token punctuation">"</span></span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert<span class="token punctuation">"</span></span> <span class="token attr-name">aria-live</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>assertive<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>p</span><span class="token punctuation">></span></span>
 </code></pre>
 <!-- prettier-ignore-end -->
 <p><code>role="alert"</code>はユーザーに即座に重要かもしれないメッセージを通知させるためのWAI-ARIAのロールになります。</p>
@@ -19,7 +19,7 @@
 <p>仕様上では<code>role="alert"</code>には<code>aria-live="assertive"</code>を暗黙的に含んでいるため書く必要はないのですが、支援技術がすべて対応しているかはわからないため、ユーザーの環境を考慮して付与されている形になっています。</p>
 <p>読み上げてもらう部分は視覚的には見えなくて良いので<a href="https://zenn.dev/yamanoku/scraps/a6c328ccc3238c">Visually Hidden</a>のスタイルを付与してあげます。</p>
 <!-- prettier-ignore-start -->
-<pre class="language-ts"><code is:raw="" class="language-ts"><span class="token keyword">const</span> <span class="token function-variable function">onNavigationEnd</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<pre class="language-ts" data-language="ts"><code is:raw="" class="language-ts"><span class="token keyword">const</span> <span class="token function-variable function">onNavigationEnd</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> announcer <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"announcer"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">const</span> title <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>textContent<span class="token punctuation">;</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span>announcer <span class="token keyword">instanceof</span> <span class="token class-name">HTMLElement</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -34,13 +34,13 @@
 <p>Route Announcerの挙動は画面遷移の開始時に発火するものです。そのため画面遷移後の挙動についても考慮する必要があります。例えば画面遷移後にキーボード操作を上から始めたい場合は、ページ上部にフォーカス地点を移動させるようにする必要があります。</p>
 <p>一番分かりやすい対応としては、画面遷移後にRoute Announcerにフォーカスを当てるというものがあります。</p>
 <!-- prettier-ignore-start -->
-<pre class="language-diff"><code is:raw="" class="language-diff"><span class="token deleted-arrow deleted"><span class="token prefix deleted">&#x3C;</span><span class="token line">body>
+<pre class="language-diff" data-language="diff"><code is:raw="" class="language-diff"><span class="token deleted-arrow deleted"><span class="token prefix deleted">&#x3C;</span><span class="token line">body>
 </span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> &#x3C;p id="announcer" role="alert" aria-live="assertive">&#x3C;/p>
 </span></span></code></pre>
 <!-- prettier-ignore-end -->
 <p>まずはRoute Announcer要素を<code>&#x3C;body></code>内での一番上に設置します。</p>
 <!-- prettier-ignore-start -->
-<pre class="language-diff"><code is:raw="" class="language-diff"><span class="token deleted-arrow deleted"><span class="token prefix deleted">&#x3C;</span><span class="token line">p
+<pre class="language-diff" data-language="diff"><code is:raw="" class="language-diff"><span class="token deleted-arrow deleted"><span class="token prefix deleted">&#x3C;</span><span class="token line">p
 </span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> id="announcer"
 </span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line"> tabindex="-1"
 </span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> role="alert"
@@ -49,7 +49,7 @@
 </span></span></code></pre>
 <!-- prettier-ignore-end -->
 <p>読み上げる要素に<code>tabindex="-1"</code>を付与します。この値があることで<kbd>Tab</kbd>キーで順番に要素へフォーカス移動する際に、その要素だけをスキップできるようになります。</p>
-<pre class="language-diff"><code is:raw="" class="language-diff"><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> if (announcer instanceof HTMLElement) {
+<pre class="language-diff" data-language="diff"><code is:raw="" class="language-diff"><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> if (announcer instanceof HTMLElement) {
 </span><span class="token prefix unchanged"> </span><span class="token line">   announcer.textContent = title;  // title要素のテキストを代入する
 </span></span><span class="token inserted-sign inserted"><span class="token prefix inserted">+</span><span class="token line">   announcer.focus();  // 読み上げる要素にフォーカスを当てる
 </span></span><span class="token unchanged"><span class="token prefix unchanged"> </span><span class="token line"> }
@@ -60,7 +60,7 @@
 <p>それを加味するとセマンティクスな要素にフォーカス移動するのがスクリーンリーダー利用者にとっても理解しやすいのかなと思っています。<code>&#x3C;main></code>要素にフォーカスさせるというのも1つの手ですが、これはページ内コンテンツをすべて読み上げてしまうことにもつながってしまいます。</p>
 <p>そのため読み上げる対象をより小さくさせたいと思っており、私の中で現時点で最適解と思っているのが<strong>ページ内の大見出し（あるいはページ内に準ずる見出し）にフォーカスさせる</strong>ことだと考えています。</p>
 <!-- prettier-ignore-start -->
-<pre class="language-ts"><code is:raw="" class="language-ts"><span class="token keyword">const</span> <span class="token function-variable function">onNavigationEnd</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<pre class="language-ts" data-language="ts"><code is:raw="" class="language-ts"><span class="token keyword">const</span> <span class="token function-variable function">onNavigationEnd</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> headings <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">"h1, h2, h3, h4, h5, h6"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">let</span> focusHeading <span class="token operator">=</span> headings<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 

@@ -100,7 +100,7 @@
 <p>RailsでのJavaScriptバンドルツールであるjsbundling-railsにBunのサポートが追加されました。これまでesbuild、Webpack、Rollupのいずれかを選択できましたがそこに新たに追加された形になります。</p>
 <h3 id="css-subgridがクロスブラウザ対応">CSS Subgridがクロスブラウザ対応</h3>
 <p>CSS Gridの新しい機能であるSubgridがクロスブラウザ対応となりました。これまでグリッド指定は直下のものしかグリッドアイテムとして認識されませんでしたが、Subgridを指定することで親子関でグリッド関係を認識できるようになります。</p>
-<pre class="language-css"><code is:raw="" class="language-css"><span class="token selector">.grid</span> <span class="token punctuation">{</span>
+<pre class="language-css" data-language="css"><code is:raw="" class="language-css"><span class="token selector">.grid</span> <span class="token punctuation">{</span>
   <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
   <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> <span class="token function">repeat</span><span class="token punctuation">(</span>auto-fit<span class="token punctuation">,</span> <span class="token function">minmax</span><span class="token punctuation">(</span>350px<span class="token punctuation">,</span> 1fr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -218,7 +218,7 @@
 <li>Partial Prerenderingがプレビュー版で公開</li>
 </ul>
 <p>Server ActionsのデモではSQLをクライアントサイド側で書けるコードのインパクトが強かったです。</p>
-<pre class="language-tsx"><code is:raw="" class="language-tsx"><span class="token keyword">function</span> <span class="token function">Bookmark</span><span class="token punctuation">(</span><span class="token punctuation">{</span> slug <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-tsx" data-language="tsx"><code is:raw="" class="language-tsx"><span class="token keyword">function</span> <span class="token function">Bookmark</span><span class="token punctuation">(</span><span class="token punctuation">{</span> slug <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>button</span>
       <span class="token attr-name">formAction</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -256,10 +256,10 @@
 <p>Prettierのv3.1.0より<code>--experimental-ternaries</code>オプションを付けることで三項演算子にフォーマットを試せるようになっています。</p>
 <p>以下のような三項演算子があった場合に、</p>
 <!-- prettier-ignore-start -->
-<pre class="language-js"><code is:raw="" class="language-js"><span class="token keyword">const</span> animalName <span class="token operator">=</span> pet<span class="token punctuation">.</span><span class="token function">canBark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> pet<span class="token punctuation">.</span><span class="token function">isScary</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">'wolf'</span> <span class="token operator">:</span> <span class="token string">'dog'</span> <span class="token operator">:</span> pet<span class="token punctuation">.</span><span class="token function">canMeow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">'cat'</span> <span class="token operator">:</span> <span class="token string">'probably a bunny'</span><span class="token punctuation">;</span>
+<pre class="language-js" data-language="js"><code is:raw="" class="language-js"><span class="token keyword">const</span> animalName <span class="token operator">=</span> pet<span class="token punctuation">.</span><span class="token function">canBark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> pet<span class="token punctuation">.</span><span class="token function">isScary</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">'wolf'</span> <span class="token operator">:</span> <span class="token string">'dog'</span> <span class="token operator">:</span> pet<span class="token punctuation">.</span><span class="token function">canMeow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">'cat'</span> <span class="token operator">:</span> <span class="token string">'probably a bunny'</span><span class="token punctuation">;</span>
 </code></pre>
 <p>以下のようにフォーマットされるようになります。</p>
-<pre class="language-js"><code is:raw="" class="language-js"><span class="token keyword">const</span> animalName <span class="token operator">=</span>
+<pre class="language-js" data-language="js"><code is:raw="" class="language-js"><span class="token keyword">const</span> animalName <span class="token operator">=</span>
   pet<span class="token punctuation">.</span><span class="token function">canBark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span>
     pet<span class="token punctuation">.</span><span class="token function">isScary</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span>
       <span class="token string-property property">"wolf"</span>
@@ -341,11 +341,11 @@
 <p>SvelteKit 2がリリースされました。Vite 5への対応、モーダルやポップアップビューに活用できるShallow routing機能の追加が挙げられます。</p>
 <h3 id="hasがクロスブラウザ対応"><code>:has()</code>がクロスブラウザ対応</h3>
 <p>引数に渡されるクラスセレクターを含んでいるセレクタを指定する擬似クラスの<code>:has()</code>がクロスブラウザ対応しました。以下のような使い方ができます。</p>
-<pre class="language-css"><code is:raw="" class="language-css"><span class="token selector">a:has(img)</span> <span class="token punctuation">{</span>
+<pre class="language-css" data-language="css"><code is:raw="" class="language-css"><span class="token selector">a:has(img)</span> <span class="token punctuation">{</span>
   <span class="token comment">/* img要素があるa要素にのみ適応するスタイル */</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<pre class="language-css"><code is:raw="" class="language-css"><span class="token comment">/* ダイアログが開いたときに画面を固定するようにする */</span>
+<pre class="language-css" data-language="css"><code is:raw="" class="language-css"><span class="token comment">/* ダイアログが開いたときに画面を固定するようにする */</span>
 <span class="token selector">html:has(dialog[open])</span> <span class="token punctuation">{</span>
   <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>

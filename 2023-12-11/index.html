@@ -8,7 +8,7 @@
 <p><a href="https://archives.yamanoku.net/i-think-reuse-css">最近考えてる「使いまわせるCSS」について | yamanoku.net</a></p>
 </blockquote>
 <p>要素の空き・余白の関係性を示すためにそれぞれの値を定義したり、ボタンの幅についてもクラス名で決め打ちで定義するようにしたりと、いわゆるユーティリティファーストなCSSを書くのがよいのではないか、と考えていた事がありました。</p>
-<pre class="language-css"><code is:raw="" class="language-css"><span class="token selector">.mt-10</span> <span class="token punctuation">{</span>
+<pre class="language-css" data-language="css"><code is:raw="" class="language-css"><span class="token selector">.mt-10</span> <span class="token punctuation">{</span>
   <span class="token property">margin-top</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token selector">.mt-100</span> <span class="token punctuation">{</span>
@@ -21,7 +21,7 @@
   <span class="token property">padding-top</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<pre class="language-css"><code is:raw="" class="language-css"><span class="token selector">.btn-w200</span> <span class="token punctuation">{</span>
+<pre class="language-css" data-language="css"><code is:raw="" class="language-css"><span class="token selector">.btn-w200</span> <span class="token punctuation">{</span>
   <span class="token property">max-width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -31,7 +31,7 @@
 <p><img width="900" height="711" src="https://i.gyazo.com/85f8040534019a309a8c605dea8e90c9.png" alt="ユーザーネームとパスワードのテキストボックスとSign inと書かれた送信ボタンが並ぶサインインフォーム。フォーム内部は白背景で外枠は角丸になっており薄いシャドウボックスがつけられている。" loading="lazy"></p>
 <p>このサインインフォームをTailwind CSSでスタイリングすると以下のようなコードになります。</p>
 <!-- prettier-ignore-start -->
-<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex min-h-screen flex-col items-center justify-center bg-gray-100<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<pre class="language-html" data-language="html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex min-h-screen flex-col items-center justify-center bg-gray-100<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex w-full max-w-md flex-col items-center justify-center rounded-lg bg-white px-4 py-8 shadow-md<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text-3xl font-bold text-gray-700<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Sign in<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>h1</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>form</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mt-4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -50,7 +50,7 @@
 </code></pre>
 <!-- prettier-ignore-end -->
 <p>たしかにHTMLのclassへの記述量が増えています。この表現をCSSで行う場合は以下のようになります。</p>
-<pre class="language-css"><code is:raw="" class="language-css"><span class="token selector">.sign-in-form</span> <span class="token punctuation">{</span>
+<pre class="language-css" data-language="css"><code is:raw="" class="language-css"><span class="token selector">.sign-in-form</span> <span class="token punctuation">{</span>
   <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
   <span class="token property">min-height</span><span class="token punctuation">:</span> 100vh<span class="token punctuation">;</span>
   <span class="token property">flex-direction</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
@@ -141,7 +141,7 @@
 <h2 id="デザイントークンを定義する手法として参考になる">デザイントークンを定義する手法として参考になる</h2>
 <p>デザイントークンとはデザインシステムを構築する上での要素の1つで、色やスペーシング、タイポグラフィのスケールなどをガイドラインから基づいて定数で表現し使われるものです。色のデザイントークンが定義されている場合、デザイナーやエンジニアでの会話は「薄いグレー（<code>#d1d5db</code>）や濃いグレー（<code>#374151</code>）」といったものから「<code>gray-300</code>や<code>gray-700</code>」という表現で行えるようになります。このようにデザイントークンはデザイナーやエンジニアが同じ言葉でそのイメージを共有できるようになるメリットがあります。</p>
 <p>Tailwind CSSではそうした色やスペーシング、タイポグラフィを定数で管理するようにしているため、デザイントークンを定義するときの参考になるのではないかなと思っています。設定ファイルである<code>tailwind.config.js</code>の<code>theme</code>を編集することで元の定義を変えたり、あるいは新たに定義を追加することができます。</p>
-<pre class="language-js"><code is:raw="" class="language-js"><span class="token comment">/** @type {import('tailwindcss').Config} */</span>
+<pre class="language-js" data-language="js"><code is:raw="" class="language-js"><span class="token comment">/** @type {import('tailwindcss').Config} */</span>
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
   <span class="token literal-property property">theme</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token literal-property property">extend</span><span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -154,14 +154,14 @@ module<span class="token punctuation">.</span>exports <span class="token operato
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
-<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bg-brand-blue<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>ブランドカラーの青を使った背景<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
+<pre class="language-html" data-language="html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>bg-brand-blue<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>ブランドカラーの青を使った背景<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>div</span><span class="token punctuation">></span></span>
 </code></pre>
 <h2 id="github-copilotとの組み合わせでプロトタイプの爆速実装">GitHub Copilotとの組み合わせでプロトタイプの爆速実装</h2>
 <p>GitHub Copilotを用いて、こうした表現をしたいというプロンプトと共にTailwind CSSを使用することで自動的にコードを生成してくれます。</p>
-<pre class="language-plaintext"><code is:raw="" class="language-plaintext">プロンプト：カードUIをTailwindCSSで作りたい
+<pre class="language-plaintext" data-language="plaintext"><code is:raw="" class="language-plaintext">プロンプト：カードUIをTailwindCSSで作りたい
 </code></pre>
 <!-- prettier-ignore-start -->
-<pre class="language-html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<pre class="language-html" data-language="html"><code is:raw="" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   <span class="token comment">&#x3C;!-- 生成時の画像ソースのURLは404だったためそこだけ差し替えました --></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>img</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>w-full h-56 object-cover object-center<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://placehold.jp/640x480.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>カード画像<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>p-4<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
