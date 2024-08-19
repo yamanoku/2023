@@ -30,7 +30,7 @@
     "prettier": "3.3.3",
     "rehype-plugin-auto-resolve-layout-shift": "1.0.0",
     "rehype-plugin-image-native-lazy-loading": "1.2.0",
-    "textlint": "14.0.5",
+    "textlint": "14.2.0",
     "textlint-filter-rule-allowlist": "4.0.0",
     "textlint-rule-preset-ja-spacing": "2.4.3",
     "textlint-rule-preset-jtf-style": "2.3.14"
