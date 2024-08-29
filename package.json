@@ -13,11 +13,11 @@
     "deploy": "gh-pages -d dist -b gh-pages -m 'chore: deploy [skip ci]' -t"
   },
   "dependencies": {
-    "@astrojs/mdx": "3.1.4",
+    "@astrojs/mdx": "3.1.5",
     "@astrojs/rss": "4.0.7",
     "@astrojs/sitemap": "3.1.6",
     "@astrojs/tailwind": "5.1.0",
-    "astro": "4.14.5",
+    "astro": "4.14.6",
     "dayjs": "1.11.13",
     "modern-normalize": "3.0.0",
     "prism-themes": "1.9.0",
