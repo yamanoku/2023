@@ -45,7 +45,7 @@ const posts = (await getCollection('articles')).sort(
                   </time>
                 </th>
                 <td>
-                  <a href={post.slug}>{post.data.title}</a>
+                  <a href={post.id}>{post.data.title}</a>
                 </td>
               </tr>
             ))
