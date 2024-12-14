@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import BaseHead from '../components/BaseHead.astro'
 import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
@@ -14,13 +14,13 @@ type Props = {
 export async function getStaticPaths() {
   global.data = global.data ? global.data : await getCollection('articles');
   return global.data.map((post) => ({
-    params: { slug: post.slug },
+    params: { id: post.id },
     props: { post },
   }));
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const pathName = canonicalURL.pathname.split('/').join('');
