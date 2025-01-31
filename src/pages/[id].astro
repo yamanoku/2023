@@ -6,6 +6,7 @@ import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 import dayjs from 'dayjs';
 import { loadDefaultJapaneseParser } from 'budoux';
+import '../styles/global.css';
 
 type Props = {
   post: CollectionEntry<'articles'>;
@@ -34,14 +35,14 @@ const twitterLink = `https://twitter.com/intent/tweet?url=https://2023.yamanoku.
   <head>
     <BaseHead title={`${post.data.title} | yamanoku Advent Calendar 2023`} description={post.data.description} />
     <style is:global>
-      @tailwind components;
+      @reference "../styles/global.css";
       @layer components {
         .footnotes {
-          @apply relative pt-y-rhythm-3 before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-[1px] before:bg-y-arcticle-border-color;
+          @apply relative pt-y-rhythm-3 before:absolute before:top-0 before:left-0 before:w-full before:h-[1px] before:bg-y-arcticle-border-color;
         }
-        .footnotes li p {
-          @apply m-0;
-        }
+      }
+      .footnotes li p {
+        margin: 0;
       }
     </style>
   </head>
