@@ -16,7 +16,7 @@
     "@astrojs/mdx": "4.0.8",
     "@astrojs/rss": "4.0.11",
     "@astrojs/sitemap": "3.2.1",
-    "@astrojs/tailwind": "5.1.5",
+    "@astrojs/tailwind": "6.0.0",
     "astro": "5.2.1",
     "dayjs": "1.11.13",
     "modern-normalize": "3.0.1",
