@@ -1,5 +1,9 @@
 @layer theme, base, components, utilities;
+
+@import 'prism-themes/themes/prism-a11y-dark.css' layer(theme);
 @import 'tailwindcss/theme.css' layer(theme);
+@import 'modern-normalize' layer(base);
+@import 'yama-normalize/yama-normalize.css' layer(base);
 @import 'tailwindcss/utilities.css' layer(utilities);
 
 @theme {
