@@ -17,7 +17,7 @@
     "@astrojs/rss": "4.0.11",
     "@astrojs/sitemap": "3.3.0",
     "@tailwindcss/vite": "4.1.2",
-    "astro": "5.6.0",
+    "astro": "5.6.1",
     "dayjs": "1.11.13",
     "modern-normalize": "3.0.1",
     "prism-themes": "1.9.0",
