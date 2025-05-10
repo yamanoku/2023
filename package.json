@@ -16,12 +16,12 @@
     "@astrojs/mdx": "4.2.6",
     "@astrojs/rss": "4.0.11",
     "@astrojs/sitemap": "3.3.1",
-    "@tailwindcss/vite": "4.1.5",
+    "@tailwindcss/vite": "4.1.6",
     "astro": "5.7.12",
     "dayjs": "1.11.13",
     "modern-normalize": "3.0.1",
     "prism-themes": "1.9.0",
-    "tailwindcss": "4.1.5",
+    "tailwindcss": "4.1.6",
     "yama-normalize": "2.1.0"
   },
   "devDependencies": {
