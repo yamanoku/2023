@@ -8,8 +8,8 @@
     "preview": "astro preview",
     "prettier": "prettier --check .",
     "prettier:write": "prettier --write .",
-    "textlint": "textlint src/content/articles/**.md",
-    "textlint:fix": "textlint --fix src/content/articles/**.md",
+    "textlint": "textlint src/articles/**.md",
+    "textlint:fix": "textlint --fix src/articles/**.md",
     "deploy": "gh-pages -d dist -b gh-pages -m 'chore: deploy [skip ci]' -t"
   },
   "dependencies": {
