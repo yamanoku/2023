@@ -28,7 +28,7 @@
 <span class="token punctuation">}</span>
 </code></pre>
 <!-- prettier-ignore-end -->
-<p>挙動については <code>onNavigationEnd</code>という関数を用意して、画面遷移が完了した際にこちらを呼び出すようにします。この関数では、<code>title</code>要素のテキストを取得してきて、要素のIDが<code>announcer</code>の中に代入しています。</p>
+<p>挙動については<code>onNavigationEnd</code>という関数を用意して、画面遷移が完了した際にこちらを呼び出すようにします。この関数では、<code>title</code>要素のテキストを取得してきて、要素のIDが<code>announcer</code>の中に代入しています。</p>
 <p>これがRoute Announcerとして最低限必要な実装になります。実装を見て分かる通り<code>title</code>要素を取得してくるため、ページごとで適切な内容を設定しておくことが重要です。</p>
 <h2 id="画面遷移後の挙動も考慮する">画面遷移後の挙動も考慮する</h2>
 <p>Route Announcerの挙動は画面遷移の開始時に発火するものです。そのため画面遷移後の挙動についても考慮する必要があります。例えば画面遷移後にキーボード操作を上から始めたい場合は、ページ上部にフォーカス地点を移動させるようにする必要があります。</p>
