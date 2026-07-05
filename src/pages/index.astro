@@ -36,7 +36,7 @@ const posts = (await getCollection('articles')).sort(
           {
             posts.map((post) => (
               <tr>
-                <td>
+                <th>
                   <time datetime={dayjs(post.data.date).format('YYYY-MM-DD')}>
                     <span class="break-keep [overflow-wrap:anywhere]">
                       {dayjs(post.data.date).format('MM月')}<wbr />
