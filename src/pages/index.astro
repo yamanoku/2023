@@ -32,6 +32,7 @@ const posts = (await getCollection('articles')).sort(
             <th>日付</th>
             <th>記事タイトル</th>
           </tr>
+        </thead>
         <tbody>
           {
             posts.map((post) => (
