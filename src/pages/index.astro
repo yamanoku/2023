@@ -32,11 +32,12 @@ const posts = (await getCollection('articles')).sort(
             <th>日付</th>
             <th>記事タイトル</th>
           </tr>
+        </thead>
         <tbody>
           {
             posts.map((post) => (
               <tr>
-                <td>
+                <th>
                   <time datetime={dayjs(post.data.date).format('YYYY-MM-DD')}>
                     <span class="break-keep [overflow-wrap:anywhere]">
                       {dayjs(post.data.date).format('MM月')}<wbr />
